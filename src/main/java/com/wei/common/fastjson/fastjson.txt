@@ -1,0 +1,45 @@
+https://blog.csdn.net/srj1095530512/article/details/82529759
+一：JSON形式与语法
+1.1：JSON对象
+{
+	"ID": 1001,
+	"name": "张三",
+	"age": 24
+}
+①：数据在花括号中
+②：数据以"键：值"对的形式出现（其中键多以字符串形式出现，值可取字符串，数值，甚至其他json对象）
+③：每两个"键：值"对以逗号分隔（最后一个"键：值"对省略逗号）
+1.2：JSON对象数组
+[
+	{"ID": 1001, "name": "张三", "age": 24},
+	{"ID": 1002, "name": "李四", "age": 25},
+	{"ID": 1003, "name": "王五", "age": 22}
+]
+①：数据在方括号中（可理解为数组）
+②：方括号中每个数据以json对象形式出现
+③：每两个数据以逗号分隔（最后一个无需逗号）
+{
+	"部门名称":"研发部",
+	"部门成员":[
+	{"ID": 1001, "name": "张三", "age": 24},
+	{"ID": 1002, "name": "李四", "age": 25},
+	{"ID": 1003, "name": "王五", "age": 22}],
+	"部门位置":"xx楼21号"
+}
+1.3：JSON字符串
+①：它必须是一个字符串，由" "或者' '包裹数据，支持字符串的各种操作
+②：里面的数据格式应该要满足其中一个格式，可以是json对象，也可以是json对象数组或者是两种基本形式的组合变形。
+二：fastjson介绍与使用
+2.2：fastjson源码分析与使用
+主要的3个类，JSON，JSONArray，JSONObject。JSONObject和JSONArray继承JSON，联系上面讲到的json基础知识并对应这三个类，
+可以发现，JSONObject代表json对象，JSONArray代表json对象数组，JSON代表JSONObject和JSONArray的转化。
+
+JSON类之toJSONString()方法，实现json对象转化为json字符串和javabean对象转化为json字符串
+JSON类之parseObject()方法，实现json字符串转换为json对象或javabean对象
+JSON类之JSONArray()方法，实现json字符串转化为json对象数组或List<T>
+JSON类之toJSON()方法，实现javabean对象转化为json对象
+JSON类之toJavaObject()方法，实现json对象转化为javabean对象
+
+
+
+
