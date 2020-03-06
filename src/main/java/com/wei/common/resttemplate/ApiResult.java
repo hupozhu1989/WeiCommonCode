@@ -13,12 +13,11 @@ public class ApiResult<T> implements Serializable {
 	public ApiResult() {
 	}
 
-	//有参构造暂时用不上
-	/*public ApiResult(String retCode, String retMsg, T data) {
+	public ApiResult(String retCode, String retMsg, T data) {
 		this.retCode = retCode;
 		this.retMsg = retMsg;
 		this.data = data;
-	}*/
+	}
 
 	public String getRetCode() {
 		return retCode;

@@ -9,21 +9,70 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- springboot核心包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.0.3.RELEASE</version>
         </dependency>
+        <!-- 单元测试,内含junit -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
+        <!-- okhttp,配合resttemplate使用  -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.3.0</version>
+            <version>3.14.4</version><!--    4.3.0        -->
         </dependency>
+        <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.45</version>
         </dependency>
+        <!-- swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+             <!-- Resources插件负责处理项目资源文件并拷贝到输出目录。Maven将main resources和test resources分开，一般main resources关联main source code，而test resources关联test source code -->
+             <!--<plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-resources-plugin</artifactId>
+                 <configuration>
+                     <encoding>UTF-8</encoding>
+                 </configuration>
+             </plugin>-->
+            <!-- 设置编译项目jdk版本与编码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 能够将Spring Boot应用打包为可执行的jar或war文件，然后以通常的方式运行Spring Boot应用。否则不管打的是jar包还是war包，都会提示（MANIFEST.MF中）找不到主清单           -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

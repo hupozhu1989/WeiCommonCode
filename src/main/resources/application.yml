@@ -1,0 +1,6 @@
+server:
+  port: 8088 #服务端口
+
+spring:
+  application:
+    name: wei-springboot #指定服务名

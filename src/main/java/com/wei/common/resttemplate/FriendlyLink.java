@@ -11,6 +11,13 @@ public class FriendlyLink {
     private String companyName;
     private String companyUrl;
 
+    public FriendlyLink(Integer id, String publishTime, String companyName, String companyUrl) {
+        this.id = id;
+        this.publishTime = publishTime;
+        this.companyName = companyName;
+        this.companyUrl = companyUrl;
+    }
+
     public Integer getId() {
         return id;
     }
