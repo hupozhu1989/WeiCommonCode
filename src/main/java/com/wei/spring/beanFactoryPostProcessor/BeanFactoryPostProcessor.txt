@@ -1,0 +1,29 @@
+https://www.cnblogs.com/piepie/p/9061076.html
+BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例如修改bean属性值，实现bean动态代理等。
+很多框架都是通过此接口实现对spring容器的扩展，例如mybatis与spring集成时，只定义了mapper接口，无实现类，
+但spring却可以完成自动注入，是不是很神奇？ 本文将通过简单的例子，展现BeanFactoryPostProcessor的扩展能力。
+
+启动项目后日志里打印如下:
+1    SpecialBeanForEngine bean name :specialBeanForEngine
+2    EngineFactory  to build Engine01 , EngineFactory :engine01-gbd
+3    BenzCar bean name :benzCar
+4    BenzCar Constructor
+5    BenzCar's engine not setting
+6    BenzCar postConstruct
+7    BenzCar's engine installed, in postConstruct
+8    BenzCar initializingBean after propertieSet
+9    BenzCar's engine installed, in initializingBean
+10   here is invoke  engine:fire
+11   BenzCar start
+12   here is invoke  engine:fire
+
+第1行： specialBeanForEngine  bean 先生成
+第2行： EngineFactory 调用 getObject()方法生产 Engine代理对象
+第3行、4行、5行： BenzCar调用构造方法，此时 engine属性还未被设置。
+第6行、7： BenzCar调用@PostConstruct注解的方法，此时engine属性已经设置。
+第8行： BenzCar调用 InitializingBean接口方法。
+第11行： BenzCar调用 initMethod指定的方法，
+第12行： BenzCar调用了代理对象的方法，SpecialBeanForEngine 类中第44行代码。
+运行结果与前面描述的bean生命周期一致。至此，我们完成了只有Engine接口的情况下，在BenzCar中注入了Engine对象。
+总结，postProcessBeanFactory接口、FactoryBean、动态代理，三者结合，可以在运行时动态的给BeanFactory中增加Bean，
+非常灵活的对spring容器进行扩展。很多开源项目在与spring整合时采用了类似方法。如果我们想自己写一些结合spring的框架程序，也可以采用类似方案。
