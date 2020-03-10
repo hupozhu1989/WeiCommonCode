@@ -28,7 +28,6 @@ public class SpecialBeanForEngine implements BeanFactoryPostProcessor, BeanNameA
     }
     
     public static class EngineFactory implements FactoryBean<Engine>, BeanNameAware, InvocationHandler {
-        
         String name;
         
         @Override

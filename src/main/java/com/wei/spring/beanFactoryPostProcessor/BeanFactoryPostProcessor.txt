@@ -1,7 +1,28 @@
 https://www.cnblogs.com/piepie/p/9061076.html
-BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例如修改bean属性值，实现bean动态代理等。
-很多框架都是通过此接口实现对spring容器的扩展，例如mybatis与spring集成时，只定义了mapper接口，无实现类，
-但spring却可以完成自动注入，是不是很神奇？ 本文将通过简单的例子，展现BeanFactoryPostProcessor的扩展能力。
+Spring的IoC容器所起的作用，就像图4-7所展示的那样，它会以某种方式加载Configuration Metadata（通常也就是XML格式的配置信息），
+然后根据这些信息绑定整个系统的对象，最终组装成一个可用的基于轻量级容器的应用系统。
+
+Spring的IoC容器实现以上功能的过程，基本上可以按照类似的流程划分为两个阶段，即容器启动阶段和Bean实例化阶段。
+Spring的IoC容器在实现的时候，充分运用了这两个实现阶段的不同特点，在每个阶段都加入了相应的容器扩展点，以便我们可以根据具体场景的需要加入
+自定义的扩展逻辑。
+1. 容器启动阶段
+容器启动伊始，首先会通过某种途径加载Configuration MetaData。除了代码方式比较直接，在大部分情况下，容器需要依赖某些工具类
+（BeanDefinitionReader）对加载的Configuration  MetaData进行解析和分析，并将分析后的信息编组为相应的BeanDefinition，最后把这些
+保存了bean定义必要信息的BeanDefinition，注册到相应的BeanDefinitionRegistry，这样容器启动工作就完成了。
+总地来说，该阶段所做的工作可以认为是准备性的，重点更加侧重于对象管理信息的收集。当然，一些验证性或者辅助性的工作也可以在这个阶段完成。
+2. Bean实例化阶段
+经过第一阶段，现在所有的bean定义信息都通过BeanDefinition的方式注册到了BeanDefini-tionRegistry中。当某个请求方通过容器的getBean方法
+明确地请求某个对象，或者因依赖关系容器需要隐式地调用getBean方法时，就会触发第二阶段的活动。该阶段，容器会首先检查所请求的对象之前是否已经初始化。
+如果没有，则会根据注册的BeanDefinition所提供的信息实例化被请求对象，并为其注入依赖。如果该对象实现了某些回调接口，也会根据回调接口的要求来装配它。
+当该对象装配完毕之后，容器会立即将其返回请求方使用。如果说第一阶段只是根据图纸装配生产线的话，那么第二阶段就是使用装配好的生产线来生产具体的产品了。
+
+Spring提供了一种叫做BeanFactoryPostProcessor的容器扩展机制。该机制允许我们在容器实例化相应对象之前，对注册到容器的BeanDefinition所保存的
+信息做相应的修改。这就相当于在容器实现的第一阶段最后加入一道工序，让我们对最终的BeanDefinition做一些额外的操作，比如修改其中bean定义的某些属性，
+为bean定义增加其他信息等。
+
+BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例如修改bean属性值，实现bean动态代理等。很多框架都是通过此接口实现对spring容器
+的扩展，例如mybatis与spring集成时，只定义了mapper接口，无实现类，但spring却可以完成自动注入，是不是很神奇？ 本文将通过简单的例子，
+展现BeanFactoryPostProcessor的扩展能力。
 
 启动项目后日志里打印如下:
 1    SpecialBeanForEngine bean name :specialBeanForEngine
@@ -23,7 +44,7 @@ BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例�
 第6行、7： BenzCar调用@PostConstruct注解的方法，此时engine属性已经设置。
 第8行： BenzCar调用 InitializingBean接口方法。
 第11行： BenzCar调用 initMethod指定的方法，
-第12行： BenzCar调用了代理对象的方法，SpecialBeanForEngine 类中第44行代码。
+第12行： BenzCar调用了代理对象的方法，SpecialBeanForEngine 类中第57行代码。
 运行结果与前面描述的bean生命周期一致。至此，我们完成了只有Engine接口的情况下，在BenzCar中注入了Engine对象。
 总结，postProcessBeanFactory接口、FactoryBean、动态代理，三者结合，可以在运行时动态的给BeanFactory中增加Bean，
 非常灵活的对spring容器进行扩展。很多开源项目在与spring整合时采用了类似方法。如果我们想自己写一些结合spring的框架程序，也可以采用类似方案。
