@@ -1,5 +1,5 @@
 package com.wei.spring.ioc;
 
-public interface UserDAO {
+public interface UserDao {
 	public void save();
 }

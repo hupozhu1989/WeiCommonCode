@@ -20,9 +20,11 @@ public class SpringDemo1 {
 	//传统方式的调用
 	@Test
 	public void demo1(){
-		UserDAOImpl userDAO = new UserDAOImpl();
+		UserDaoImpl userDAO = new UserDaoImpl();
 		userDAO.setName("孙悟空");
 		userDAO.save();
+		//打印结果:
+		//UserDaoImpl执行了...孙悟空
 	}
 
 	//spring-BeanFactory
@@ -33,8 +35,10 @@ public class SpringDemo1 {
 		//FileSystemResource
 		//Resource resource = new FileSystemResource(new File("src/test/resources/applicationContext.xml"));
 		BeanFactory beanFactory = new XmlBeanFactory(resource);
-		UserDAO userDAO = (UserDAO)beanFactory.getBean("userDAO");
+		UserDao userDAO = (UserDao)beanFactory.getBean("userDao");
 		userDAO.save();
+		//打印结果:
+		//UserDaoImpl执行了...猪八戒
 	}
 
 	//Spring-ApplicationContext
@@ -44,8 +48,10 @@ public class SpringDemo1 {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		//FileSystemXmlApplicationContext
 		//ApplicationContext applicationContext = new FileSystemXmlApplicationContext("src/test/resources/applicationContext.xml");
-		UserDAO userDAO = (UserDAO)applicationContext.getBean("userDAO");
+		UserDao userDAO = (UserDao)applicationContext.getBean("userDao");
 		userDAO.save();
+		//打印结果:
+		//UserDaoImpl执行了...猪八戒
 	}
 
 

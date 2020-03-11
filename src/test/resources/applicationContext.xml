@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Spring的入门的配置==================== -->
-	<bean name="userDAO" class="com.wei.spring.ioc.UserDAOImpl" >
+	<bean name="userDao" class="com.wei.spring.ioc.UserDaoImpl" >
 		<property name="name" value="猪八戒"/>
 	</bean>
 	

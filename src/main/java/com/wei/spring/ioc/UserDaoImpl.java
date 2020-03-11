@@ -1,6 +1,6 @@
 package com.wei.spring.ioc;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 	private String name;
 
 	public void setName(String name) {
@@ -9,7 +9,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void save() {
-		System.out.println("UserDAOImpl执行了..."+name);
+		System.out.println("UserDaoImpl执行了..."+name);
 	}
 
 }
