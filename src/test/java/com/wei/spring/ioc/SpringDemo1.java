@@ -41,7 +41,12 @@ public class SpringDemo1 {
 		//UserDaoImpl执行了...猪八戒
 	}
 
-	//Spring-ApplicationContext
+	/**
+	 * Spring-ApplicationContext
+	 *	ClassPathXmlApplicationContext-在 ClassPath 中寻找 xml 配置文件，根据 xml 文件内容来构建 ApplicationContext
+	 *	FileSystemXmlApplicationContext-构造函数需要一个 xml 配置文件在系统中的路径，其他和 ClassPathXmlApplicationContext 基本上一样
+	 *	AnnotationConfigApplicationContext-基于注解来使用的，它不需要配置文件，采用 java 配置类和各种注解来配置
+	 */
 	@Test
 	public void demo3(){
 		//ClassPathXmlApplicationContext
