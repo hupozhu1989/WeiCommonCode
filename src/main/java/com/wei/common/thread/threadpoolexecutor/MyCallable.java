@@ -1,4 +1,4 @@
-package com.wei.common.threadpoolexecutor;
+package com.wei.common.thread.threadpoolexecutor;
 
 import java.util.concurrent.Callable;
 
