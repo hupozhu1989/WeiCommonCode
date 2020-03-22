@@ -1,4 +1,4 @@
-package com.wei.common.threadpoolexecutor;
+package com.wei.common.thread.threadpoolexecutor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import static com.wei.common.threadpoolexecutor.ThreadPoolConstants.*;
+import static com.wei.common.thread.threadpoolexecutor.ThreadPoolConstants.*;
 
 public class CallableDemo {
     public static void main(String[] args) {
