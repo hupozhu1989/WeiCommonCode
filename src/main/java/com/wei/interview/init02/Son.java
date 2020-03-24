@@ -1,4 +1,4 @@
-package com.wei.interview.init;
+package com.wei.interview.init02;
 
 /*
    【类初始化】和【实例初始化】

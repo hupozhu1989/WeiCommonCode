@@ -1,4 +1,4 @@
-package com.wei.interview.init;
+package com.wei.interview.init02;
 
 /*
  * 父类的初始化<clinit>：
