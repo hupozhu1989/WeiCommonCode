@@ -1,4 +1,4 @@
-package com.wei.common.keyword.serialize;
+package com.wei.common.keyword.kw_transient;
 
 import java.io.Serializable;
 
