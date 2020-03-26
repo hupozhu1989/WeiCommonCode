@@ -2,15 +2,12 @@ package com.wei.springboot.controller;
 
 import com.wei.springboot.entity.UserEntity;
 import com.wei.springboot.util.RedisUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @program: springbootdemo
@@ -18,47 +15,59 @@ import java.util.concurrent.TimeUnit;
  * @Author: Mr.Zheng
  * @Description:
  */
+@Api("redis")
 @RequestMapping("/redis")
 @RestController
 public class RedisController {
 
-    private static final int EXPIRE_TIME = 60;   // redis中存储的过期时间60s
-
     @Autowired
     private RedisUtil redisUtil;
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-
-    @RequestMapping("/string/set")
-    public boolean stringSet(@RequestParam("key") String key, @RequestParam("value")String value){
-        return redisUtil.set(key,value);
+    @ApiOperation("存储string")
+    @GetMapping("/string/set")
+    public boolean stringSet(@RequestParam("key") String key, @RequestParam("value")String value, @RequestParam("time") long time){
+        return redisUtil.set(key,value,time);
     }
 
-    @RequestMapping("/string/get")
-    public Object stringGet(@RequestParam("key") String key){
-        return redisUtil.get(key);
-    }
-
-    @RequestMapping("/expire")
-    public boolean expire(@RequestParam("key") String key){
-        return redisUtil.expire(key,EXPIRE_TIME);
-    }
-
-    @RequestMapping("/hash/set")
-    public Boolean haseSet(){
+    @ApiOperation("存储ojb")
+    @GetMapping("/string/set/obj")
+    public boolean stringSetObj(){
         UserEntity userEntity =new UserEntity();
         userEntity.setId(Long.valueOf(1001));
         userEntity.setName("zhangsan");
         userEntity.setAge(String.valueOf(20));
         userEntity.setCreateTime(new Date());
-
-        HashOperations<String, Object, Object> hashMap = redisTemplate.opsForHash();
-        hashMap.put(userEntity.getId().toString(),"name",userEntity.getName());
-        hashMap.put(userEntity.getId().toString(),"age",userEntity.getAge());
-        hashMap.put(userEntity.getId().toString(),"createTime",userEntity.getCreateTime());
-
-        return redisTemplate.expire(userEntity.getId().toString(),EXPIRE_TIME, TimeUnit.SECONDS);
+        return redisUtil.set(userEntity.getId().toString(),userEntity);
     }
+
+    @ApiOperation("通过key获取value")
+    @GetMapping("/string/get")
+    public Object stringGet(@RequestParam("key") String key){
+        return redisUtil.get(key);
+    }
+
+    @ApiOperation("通过key设置过期时间")
+    @GetMapping("/expire")
+    public boolean expire(@RequestParam("key") String key,@RequestParam("time") long time){
+        return redisUtil.expire(key,time);
+    }
+
+    @ApiOperation("存储hash")
+    @PostMapping("/hash/set")
+    public Boolean hashSet(@RequestBody UserEntity userEntity){
+        String key = "USER:"+userEntity.getId();
+        redisUtil.hset(key,"id",userEntity.getId());
+        redisUtil.hset(key,"name",userEntity.getName());
+        redisUtil.hset(key,"age",userEntity.getAge());
+        return redisUtil.hset(key, "createTime", userEntity.getCreateTime());
+    }
+
+    @ApiOperation("通过key获取hash")
+    @GetMapping("/hash/get")
+    public Object hashGet(@RequestParam("key") String key,@RequestParam("item") String item){
+        return redisUtil.hget(key, item);
+    }
+
+
 
 }
