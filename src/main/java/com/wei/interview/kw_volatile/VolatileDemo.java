@@ -1,4 +1,4 @@
-package com.wei.common.keyword.kw_volatile;
+package com.wei.interview.kw_volatile;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,12 +11,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VolatileDemo {
     /*
         JMM: 可见性 原子性 有序性
+        volatile的作用:①保证可见性,②不保证原子性,③散禁止指令重排
      */
     public static void main(String[] args) {//main是一切运行方法的入口
-        //volatile的可见性
+        //volatile的可见性: 每个线程的工作内存  主物理内存
         //seeOkByVolatile();
 
         //volatile不保证原子性
+        automaticMethod();
+    }
+
+    public static void automaticMethod() {
         MyData myData = new MyData();
         for (int i = 1; i <= 20; i++) {
             new Thread(() -> {
@@ -28,6 +33,7 @@ public class VolatileDemo {
         }
 
         while (Thread.activeCount() > 2){
+            //让步,线程让出当前时间片给其他线程执行
             Thread.yield();
         }
         System.out.println(Thread.currentThread().getName()+"\t finally number value: " + myData.number);

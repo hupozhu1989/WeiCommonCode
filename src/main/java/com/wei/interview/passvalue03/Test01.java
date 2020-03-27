@@ -9,6 +9,7 @@ public class Test01 {
 		②实参是引用数据类型
 			传递地址值
 			特俗的类型：String、包装类等对象的不可变性
+		栈管运行 堆管存储
 	 */
 	public static void main(String[] args) {
 		int i = 1;
