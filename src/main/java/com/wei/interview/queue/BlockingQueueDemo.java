@@ -1,4 +1,4 @@
-package com.wei.interview;
+package com.wei.interview.queue;
 
 /**
  * @author weizhenchao
