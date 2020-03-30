@@ -14,7 +14,8 @@ public class SyncAndReentrantLockDemo {
         题目:synchronize和Lock有什么区别?用新的lock有什么好处?
         1.原始构成
             synchronize是关键字属于jvm层面
-                monitorenter(底层是通过monitor对象来完成,其实wait/notify等方法也依赖于monitor对象只有在同步块或方法中才能调用wait/notify等方法)
+                monitorenter(底层是通过monitor对象来完成,其实wait/notify等方法也依赖于monitor对象
+                只有在同步块或方法中才能调用wait/notify等方法)
                 monitorexit
             Lock是具体类(java.util.concurrent.locks.Lock)是api层面的锁
         2.使用方法

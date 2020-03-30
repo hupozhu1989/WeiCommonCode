@@ -12,14 +12,13 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ProdConsumerTraditionDemo {
     /*
-    一个初始值为0的变量 两个线程交替操作 一个加1 一个减1来5轮
         多线程模板口诀:
         1.  线程  操作(方法)  资源类
         2.  判断  干活        通知
         3.  防止虚假唤醒机制
      */
-
     public static void main(String[] args) {
+        //一个初始值为0的变量 两个线程交替操作 一个加1 一个减1来5轮
         ShareData shareData = new ShareData();
         new Thread(() -> {
             for (int i = 1; i <= 5; i++) {
@@ -39,7 +38,6 @@ public class ProdConsumerTraditionDemo {
                 }
             }
         }, "BB").start();
-
     }
 }
 
