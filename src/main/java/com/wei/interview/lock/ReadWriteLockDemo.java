@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
+ * 读写锁
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/29
@@ -31,6 +32,7 @@ public class ReadWriteLockDemo {
                 myCache.put(temp+"",temp);
             },String.valueOf(i)).start();
         }
+
         for (int i = 1; i <= 5; i++) {
             final int temp = i;
             new Thread(()->{

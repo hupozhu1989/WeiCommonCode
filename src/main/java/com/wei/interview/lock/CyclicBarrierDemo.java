@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * 人到齐了再开会
+ * CyclicBarrier-人到齐了再开会
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/29

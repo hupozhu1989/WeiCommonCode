@@ -3,7 +3,7 @@ package com.wei.interview.lock;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 火箭发射
+ * CountDownLatch-火箭发射
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/29
@@ -21,7 +21,7 @@ public class CountDownLatchDemo {
     }
 
     public static void mieLiuGuo() throws InterruptedException {
-        String[] sixCountries = {"齐","楚","燕","韩","赵","魏"};
+        String[] sixCountries = {"韩","赵","魏","楚","燕","齐"};
         CountDownLatch countDownLatch = new CountDownLatch(6);
         for (int i = 1; i <= 6; i++) {
             new Thread(()->{
