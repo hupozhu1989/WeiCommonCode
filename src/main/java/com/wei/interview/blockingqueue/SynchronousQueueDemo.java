@@ -1,4 +1,4 @@
-package com.wei.interview.queue;
+package com.wei.interview.blockingqueue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;

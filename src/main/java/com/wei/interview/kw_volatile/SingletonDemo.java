@@ -1,12 +1,12 @@
 package com.wei.interview.kw_volatile;
 
 /**
+ * volatile禁止指令重排
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/26
  */
 public class SingletonDemo {
-    //volatile禁止指令重排
     public static volatile SingletonDemo instance = null;
 
     private SingletonDemo() {
@@ -25,6 +25,9 @@ public class SingletonDemo {
                         3.设置instance指向刚分配的内存地址,此时instance != null
 
                         java创建对象的过程:①类加载检查②分配内存③初始化零值④设置对象头⑤执行init方法
+                        计算机在执行程序时,为了提高性能,编译器和处理器常常会做指令重排,一把分为以下3种:
+                        源代码->编译器优化的重排->指令并行的重排->内存系统的重排->最终执行的指令
+                        处理器在进行重新排序时必须要考虑指令之间的数据依赖性
                      */
                 }
             }

@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * volatile保证可见性和不保证原子性
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/25
@@ -11,11 +12,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VolatileDemo {
     /*
         JMM: 可见性 原子性 有序性
-        volatile的作用:①保证可见性,②不保证原子性,③散禁止指令重排
+        volatile的作用:①保证可见性,②不保证原子性,③禁止指令重排
+        各个线程对主内存中共享变量的操作都是各个线程各自拷贝到自己的工作内存操作后再写回主内存中的
      */
     public static void main(String[] args) {//main是一切运行方法的入口
         //volatile的可见性: 每个线程的工作内存  主物理内存
-        //seeOkByVolatile();
+//        seeOkByVolatile();
 
         //volatile不保证原子性
         automaticMethod();
@@ -61,7 +63,7 @@ public class VolatileDemo {
 }
 
 class MyData {
-    //int number = 0;
+//    int number = 0;
     volatile int number = 0;
 
     public void addTo60(){

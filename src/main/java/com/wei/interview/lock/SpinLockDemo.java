@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
+ * 自旋锁
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/28
@@ -17,6 +18,12 @@ public class SpinLockDemo {
         System.out.println(Thread.currentThread().getName()+"\tinvoked myLock()");
         while (!atomicReference.compareAndSet(null,thread)){
             //自旋  空转
+            try {
+                TimeUnit.MILLISECONDS.sleep(500L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+"\t空转...");
         }
     }
     public void myUnLock(){
