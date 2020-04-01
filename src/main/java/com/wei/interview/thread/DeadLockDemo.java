@@ -15,6 +15,13 @@ public class DeadLockDemo {
         new Thread(new HoldThread(lockA, lockB), "threadAAA").start();
         new Thread(new HoldThread(lockB, lockA), "threadBBB").start();
 
+        /*
+            Linux       ps -ef|grep xxxx        ls -l
+            windows下的java运行程序,也有类似ps的查看进程的命令,jps = java ps
+                jps -l
+                jstack 9636
+
+         */
     }
 }
 

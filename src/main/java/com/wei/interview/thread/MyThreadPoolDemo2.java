@@ -52,7 +52,7 @@ public class MyThreadPoolDemo2 {
             Executors.defaultThreadFactory(),
             //直接抛出RejectedException异常阻止系统正常运行
             //new ThreadPoolExecutor.AbortPolicy()//默认
-            //"调用者运行"一种调节机制,该策略既不会抛弃任务,也不会抛出异常,而是
+            //"调用者运行"一种调节机制,该策略既不会抛弃任务,也不会抛出异常,而是将某些任务回退到调用者,从而降低新任务的流量
             //new ThreadPoolExecutor.CallerRunsPolicy()
             //抛弃队列中等待最久的任务,然后把当前任务加入队列中尝试再次提交
             //new ThreadPoolExecutor.DiscardOldestPolicy()
