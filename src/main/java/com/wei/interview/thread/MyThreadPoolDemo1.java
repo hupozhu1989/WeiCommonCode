@@ -4,11 +4,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 线程池基本学习
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/31
  */
-public class MyThreadPoolDemo {
+public class MyThreadPoolDemo1 {
     public static void main(String[] args) {
         //ExecutorService threadPool = Executors.newFixedThreadPool(5);//一池5个处理线程
         //ExecutorService threadPool = Executors.newSingleThreadExecutor();//一池1个处理线程
