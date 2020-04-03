@@ -6,11 +6,20 @@ package com.wei.interview.jvm;
  * @date：2020/4/2
  */
 public class JvmDemo01 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        /*System.out.println("hello GC");
+        TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);*/
 
-
-
+        countMemory();
     }
+
+    private static void countMemory() {
+        long totalMemory = Runtime.getRuntime().totalMemory();//返回Java虚拟机中的内存总量
+        long maxMemory = Runtime.getRuntime().maxMemory();//返回Java虚拟机试图使用的最大内存量
+        System.out.println("TOTAL_MEMORY(-Xms) = "+totalMemory+"字节,"+(totalMemory/(double)1024/1024)+"MB");
+        System.out.println("MAX_MEMORY(-Xmx) = "+maxMemory+"字节,"+(maxMemory/(double)1024/1024)+"MB");
+    }
+
     /*
         JVM体系结构:
             线程共享:方法区    堆
@@ -41,6 +50,48 @@ public class JvmDemo01 {
                 -Xcomp      第一次使用就编译成本地代码
                 -Xmixed     混合模式
             XX参数
+                Boolean类型
+                    公式:
+                        -XX:+或者-某个属性值
+                        +表示开启   -表示关闭
+                    Case:
+                        是否打印GC收集细节
+                            -XX:+PrintGCDetails
+                            -XX:-PrintGCDetails
+                        是否使用串行垃圾收集器
+                            -XX:-UseSerialGC
+                            -XX:+UseSerialGC
+                KV设值类型
+                    公式:
+                        -XX:属性key=属性值value
+                    Case
+                        -XX:MetaspaceSize=128m
+                        -XX:MaxTenuringThreshold=15
+        查看java的进程,并输出完全的包名      jps -l
+        jinfo举例，如何查看当前运行程序的配置
+            公式:
+                jinfo -flag 配置项 进程编号
+            Case
+                jinfo -flags 8372
+                jinfo -flag InitialHeapSize 8372
+                jinfo -flag UseSerialGC 8372
+                jinfo -flag UseParallelGC 8372
+                jinfo -flag MaxHeapSize 8372
+        两个经典参数:
+            -Xms    等价于 -XX:InitialHeapSize
+            -Xmx    等价于 -XX:MaxHeapSize
+
+        查看JVM默认值
+            查看初始默认值,公式:
+                java -XX:+PrintFlagsInitial -version
+                java -XX:+PrintFlagsInitial
+            主要查看修改更新,公式:
+                java -XX:+PirntFlagsFinal
+                java -XX:+PirntFlagsFinal -version
+            java -XX:+PrintCommandLineFlags
+
+
+
 
      */
 }
