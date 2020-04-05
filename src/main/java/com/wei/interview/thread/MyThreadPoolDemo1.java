@@ -81,7 +81,7 @@ public class MyThreadPoolDemo1 {
             4.unit:keepAliveTime的单位
             5.workQueue:任务队列,被提交但尚未被执行的任务.
             6.threadFactory:表示生成线程池中工作线程的线程工厂,用户创建新线程,一般用默认即可
-            7.handler:拒绝策略,表示当线程队列满了并且工作线程大于等于线程池的最大显示数(maxnumPoolSize)时如何来拒绝.
+            7.handler:拒绝策略,表示当线程队列满了并且工作线程大于等于线程池的最大线程数(maxnumPoolSize)时如何来拒绝.
 
         线程池底层工作原理:
             1.在创建了线程池后,等待提交过来的任务请求;

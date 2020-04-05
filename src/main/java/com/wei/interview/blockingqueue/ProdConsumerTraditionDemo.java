@@ -58,7 +58,7 @@ class ShareData{
             }
             //干活
             num++;
-            System.out.println(Thread.currentThread().getName() + "\t" + num);
+            System.out.println(Thread.currentThread().getName() + "\t加一" + "\t" + num);
             //通知唤醒
             condition.signalAll();
         } finally {
@@ -75,7 +75,7 @@ class ShareData{
             }
             //干活
             num--;
-            System.out.println(Thread.currentThread().getName() + "\t" + num);
+            System.out.println(Thread.currentThread().getName() + "\t减一" + "\t" + num);
             //通知唤醒
             condition.signalAll();
         } finally {

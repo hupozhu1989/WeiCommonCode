@@ -65,16 +65,16 @@ public class VolatileDemo {
 class MyData {
 //    int number = 0;
     volatile int number = 0;
+    AtomicInteger atomicInteger = new AtomicInteger();
 
     public void addTo60(){
         this.number = 60;
     }
-    
+
     public /*synchronized*/ void addPlusPlus(){
         this.number++;
     }
 
-    AtomicInteger atomicInteger = new AtomicInteger();
     public void addAtomic(){
         atomicInteger.incrementAndGet();
     }

@@ -9,10 +9,10 @@ import java.util.concurrent.*;
 public class MyThreadPoolDemo2 {
     public static void main(String[] args) {
         //自定义线程池
-        //method01();
+        method01();
 
         //Executors生成线程池
-        method02();
+        //method02();
     }
 
     private static void method02() {

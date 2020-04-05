@@ -44,13 +44,13 @@ public class ReentrantReadWriteLockDemo {
 class MyCache{
     //volatile修饰保证可见性
     private volatile Map<String,Object> map = new HashMap<>();
-    private ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     /**
      * 写
      */
     public void put(String key,Object value){
-        rwLock.writeLock().lock();
+        lock.writeLock().lock();
         try {
             System.out.println(Thread.currentThread().getName()+"\t正在写入:"+key);
             try {
@@ -62,7 +62,7 @@ class MyCache{
             map.put(key,value);
             System.out.println(Thread.currentThread().getName()+"\t写入完成:");
         } finally {
-            rwLock.writeLock().unlock();
+            lock.writeLock().unlock();
         }
     }
 
@@ -70,7 +70,7 @@ class MyCache{
      * 读
      */
     public void get(String key){
-        rwLock.readLock().lock();
+        lock.readLock().lock();
         try {
             System.out.println(Thread.currentThread().getName()+"\t正在读取:");
             //暂停一会儿线程
@@ -82,7 +82,7 @@ class MyCache{
             Object value = map.get(key);
             System.out.println(Thread.currentThread().getName()+"\t读取完成:"+value);
         } finally {
-            rwLock.readLock().unlock();
+            lock.readLock().unlock();
         }
     }
 }
