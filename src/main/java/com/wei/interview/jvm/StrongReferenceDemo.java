@@ -1,8 +1,11 @@
 package com.wei.interview.jvm;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author weizhenchao
@@ -10,7 +13,7 @@ import java.util.WeakHashMap;
  * @date：2020/4/6
  */
 public class StrongReferenceDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         //强引用
         //strong();
 
@@ -19,10 +22,42 @@ public class StrongReferenceDemo {
         //soft_not_enough_memory();
 
         //弱引用
-        weak();
+        //weak();
 
         //myWeakHashMap();
 
+        //method_reference_queue();
+
+        method02();
+    }
+
+    public static void method02() throws Exception{
+        Object object = new Object();
+        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
+        WeakReference<Object> weakReference = new WeakReference<>(object,referenceQueue);
+
+        System.out.println(object);
+        System.out.println(referenceQueue.poll());
+        System.out.println(weakReference.get());
+
+        System.out.println("======================");
+        object = null;
+        System.gc();
+        TimeUnit.MILLISECONDS.sleep(500L);
+        System.out.println(object);
+        System.out.println(referenceQueue.poll());
+        System.out.println(weakReference.get());
+    }
+
+
+    public static void method_reference_queue(){
+        Object object = new Object();
+        ReferenceQueue<Object> referenceQueue = new ReferenceQueue<>();
+        PhantomReference<Object> phantomReference = new PhantomReference<>(object,referenceQueue);
+
+        System.out.println(object);
+        System.out.println(referenceQueue.poll());
+        System.out.println(phantomReference.get());
     }
 
     public static void myWeakHashMap(){
@@ -114,7 +149,8 @@ public class StrongReferenceDemo {
         Map<String,SoftReference<Bitmap>> imageCache = new HashMap<String,SoftReference<Bitmap>>();
 
         虚引用需要用java.lang.ref.PhantomReference类来实现,虚引用不会决定对象的生命周期,如果一个对象仅持有虚引用,name它就和没有任何引用一样,在任何时候都可能被垃圾回收期回收,
-        它不能单独使用也不能通过它访问对象,虚引用必须和引用队列(ReferenceQueue)联合使用
+        它不能单独使用也不能通过它访问对象,虚引用必须和引用队列(ReferenceQueue)联合使用.虚引用主要作用是跟踪对象被垃圾回收的状态,提供了一种确保对象被finalize以后做某些事情的机制.
+        设置虚引用关联的唯一目的,就是在这个对象被收集器回收的时候收到一个系统通知或者后续添加进一步的处理
 
 
 
