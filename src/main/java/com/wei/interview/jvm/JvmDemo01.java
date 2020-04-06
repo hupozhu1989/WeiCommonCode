@@ -1,5 +1,7 @@
 package com.wei.interview.jvm;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author weizhenchao
  * @version 1.0
@@ -7,10 +9,10 @@ package com.wei.interview.jvm;
  */
 public class JvmDemo01 {
     public static void main(String[] args) throws Exception{
-        /*System.out.println("hello GC");
-        TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);*/
+        System.out.println("hello GC");
+        TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
 
-        countMemory();
+        //countMemory();
     }
 
     private static void countMemory() {
@@ -74,22 +76,36 @@ public class JvmDemo01 {
             Case
                 jinfo -flags 8372
                 jinfo -flag InitialHeapSize 8372
+                jinfo -flag MaxHeapSize 8372
                 jinfo -flag UseSerialGC 8372
                 jinfo -flag UseParallelGC 8372
-                jinfo -flag MaxHeapSize 8372
         两个经典参数:
             -Xms    等价于 -XX:InitialHeapSize
             -Xmx    等价于 -XX:MaxHeapSize
 
-        查看JVM默认值
+        查看JVM默认值(参数盘点家底)
+            := 表示 jvm加载或人为 修改过
             查看初始默认值,公式:
                 java -XX:+PrintFlagsInitial -version
                 java -XX:+PrintFlagsInitial
             主要查看修改更新,公式:
                 java -XX:+PirntFlagsFinal
                 java -XX:+PirntFlagsFinal -version
-            java -XX:+PrintCommandLineFlags
+            java -XX:+PrintCommandLineFlags -version
 
+        元空间(Java8)与永久代(Java7)之间最大的区别:
+            永久代使用JVM的堆内存,元空间使用本机物理内存,元空间大小受本地内存限制.
+        常用基本配置参数:
+            -Xms    等价于-XX:InitialHeapSize  初始内存大小,默认为物理内存1/64
+            -Xmx    等价于-XX:MaxHeapSize      最大分配内存，默认为物理内存1/4
+            -Xss    等价于-XX:ThreadStackSize  设置单个线程的大小，一般默认为512K~1024K
+            -Xmn    设置年轻代大小
+            -XX:+MetaspaceSize   设置元空间大小     -Xms128m -Xmx4096m -Xss1024k -XX:MetaspaceSize=512m -XX:+PrintCommandLineFlags -XX:PrintGCDetails -XX:+UseSerialGC
+            -XX:+PrintGCDetails  输出详细GC收集日志信息
+            -XX:SurvivoRatio    设置新生代中Eden和S0/S1空间的比例,默认: -XX:SurvivoRatio=8,Eden:S0:S1=8:1:1,SurvivoRatio就是设置Eden区的比例占多少,S0/S1相同
+            -XX:NewRatio    设置年轻代与老年代在堆结构的占比,默认: -XX:NewRatio=2,新生代占1,老年代2,年轻代占整个堆的1/3,NewRatio是设置老年代的占比,剩下的1给新生代
+            -XX:MaxTenuringThreshold    设置垃圾最大年龄,如果设置为0的话,则年轻代对象不经过Survivor区,直接进入老年代,对于老年代比较多的应用,可以提高效率.
+                    如果将此值设置为一个较大值,则年轻代对象会在Survivor区进行多次复制,这样可以增加对象在年轻代的存活时间,增加在年轻代被回收的概率.
 
 
 
