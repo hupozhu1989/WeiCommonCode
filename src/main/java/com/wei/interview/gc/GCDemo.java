@@ -1,5 +1,7 @@
 package com.wei.interview.gc;
 
+import java.util.Random;
+
 /**
  * @author weizhenchao
  * @create 2020-04-08-下午 3:05
@@ -7,7 +9,11 @@ package com.wei.interview.gc;
 public class GCDemo {
     public static void main(String[] args) {
 
-
+        String str = "strong";
+        while (true){
+            str += str + new Random().nextInt(11111111)+new Random().nextInt(222222222);
+            str.intern();
+        }
 
     }
     /*
