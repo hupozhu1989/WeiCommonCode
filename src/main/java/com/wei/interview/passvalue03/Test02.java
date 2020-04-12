@@ -1,9 +1,5 @@
 package com.wei.interview.passvalue03;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 /**
  * 栈管运行 堆管存储
  * @author weizhenchao
@@ -36,14 +32,3 @@ public class Test02 {
     }
 }
 
-@NoArgsConstructor
-@Getter
-@Setter
-class Person{
-    private Integer id;
-    private String personName;
-
-    public Person(String personName) {
-        this.personName = personName;
-    }
-}
