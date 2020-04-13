@@ -14,9 +14,10 @@ public class Demo02 {
         String s6 = s3 + s4;
 
         System.out.println(s1 == s2);//false
+        System.out.println(s1 == s2.intern());//true
         System.out.println(s1 == s3);//true
         System.out.println(s5 == s6);//false
         System.out.println(s5 == s6.intern());//true
-
+        System.out.println(s6 == s6.intern());//false
     }
 }
