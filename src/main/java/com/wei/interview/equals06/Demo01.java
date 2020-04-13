@@ -10,7 +10,7 @@ import java.util.Set;
  * @version 1.0
  * @date：2020/4/12
  */
-public class Test01 {
+public class Demo01 {
     public static void main(String[] args) {
         String s1 = new String("abc");
         String s2 = new String("abc");
