@@ -14,7 +14,15 @@ public class Client {
                 System.out.println(Thread.currentThread().getName()+"\t"+orderNum);
             },String.valueOf(i)).start();
         }
+        /*
+            JUC
+            sync+lock 仅限于一个jvm环境(单机)
+            1:N
+            JVM:N thread
+            N jvm: N thread
 
+            分布式锁实现:①redis-redission ②zookeeper
+         */
     }
 
     public static void method01() {
