@@ -1,6 +1,6 @@
 package com.wei.common.thread.bio;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -34,6 +34,51 @@ public class Server {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+}
+
+/*
+ * 服务器线程处理类
+ */
+class ServerThread extends Thread {
+    //和本线程相关的Socket
+    Socket socket = null;
+
+    public static int count = 0;
+
+    public ServerThread(Socket socket) {
+        this.socket = socket;
+    }
+
+    //线程执行的操作，响应客户端的请求
+    public void run() {
+        InputStreamReader is = null;
+        OutputStream os = null;
+        BufferedReader br = null;
+        try {
+            //获取输入流，并读取客户端信息
+            is = new InputStreamReader(socket.getInputStream());
+            br = new BufferedReader(is);
+            os = socket.getOutputStream();
+
+            String line = null;
+            while ((line = br.readLine()) != null) {//循环读取客户端的信息
+                System.out.println("【客户端】：" + line);
+                os.write(("收到消息。。。" + ++count + "\r\n").getBytes("UTF-8"));
+                os.flush();//调用flush()方法将缓冲输出
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                is.close();
+                os.close();
+                br.close();
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
