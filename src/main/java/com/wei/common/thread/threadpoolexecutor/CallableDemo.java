@@ -16,11 +16,11 @@ public class CallableDemo {
         //使用阿里巴巴推荐的创建线程池的方式
         //通过ThreadPoolExecutor构造函数自定义参数创建
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-            CORE_POOL_SIZE,
-            MAX_POOL_SIZE,
-            KEEP_ALIVE_TIME,
+            CORE_POOL_SIZE,//5
+            MAX_POOL_SIZE,//10
+            KEEP_ALIVE_TIME,//1L
             TimeUnit.SECONDS,
-            new ArrayBlockingQueue<>(QUEUE_CAPACITY),
+            new ArrayBlockingQueue<>(QUEUE_CAPACITY),//100
             new ThreadPoolExecutor.CallerRunsPolicy()
         );
 

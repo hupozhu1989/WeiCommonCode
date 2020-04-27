@@ -16,13 +16,11 @@ import java.util.Set;
  * @Version: 1.0
  */
 public class NioServer02 {
-    private Integer prot = 9997;
+    private Integer port = 9997;
     private ServerSocketChannel server;
     private Selector selector;
-    public NioServer02(Integer prot){
-        if(prot != null){
-            this.prot = prot;
-        }
+    public NioServer02(Integer port){
+        this.port = port;
     }
 
     public void start(){
@@ -35,13 +33,13 @@ public class NioServer02 {
 
             //配置server，为银行的客服大厅设置为非阻塞模式，也就是只要有人来办理业务就进入大厅等待，而不是在门口挤着
             server.configureBlocking(false); //设置为非阻塞模式
-            server.bind(new InetSocketAddress(this.prot)); //server绑定IP和端口
+            server.bind(new InetSocketAddress(this.port)); //server绑定IP和端口
 
             //将创建的selector绑定到server上面，把叫号机器搬到客服大厅，这样只有有客户来了就直接在selector上取号
             //首先注册的是接受请求的服务ACCEPT请求。类似
             server.register(selector, SelectionKey.OP_ACCEPT);
 
-            System.out.println("服务器启动完毕。端口号："+this.prot);
+            System.out.println("服务器启动完毕。端口号："+this.port);
 
             //开始处理客户端发送过来的请求
             handle();
@@ -111,7 +109,7 @@ public class NioServer02 {
     }
 
     public static void main(String[] args) {
-        new NioServer02(null).start();
+        new NioServer02(9997).start();
     }
 
 }
