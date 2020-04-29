@@ -2,6 +2,7 @@ package com.wei.interview.thread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author weizhenchao
@@ -17,9 +18,10 @@ public class CallableDemo {
         int result01 = 100;
         System.out.println(Thread.currentThread().getName()+"\t");
 
-        /*while (futureTask.isDone()){
-
-        }*/
+        while (!futureTask.isDone()){
+            TimeUnit.SECONDS.sleep(1L);
+            System.out.println("~~~等待~~~");
+        }
         int result02 = futureTask.get();//一般get()方法放在最后面
         System.out.println("******result:"+(result01+result02));
     }
@@ -31,6 +33,7 @@ class MyThread implements Callable<Integer>{
     @Override
     public Integer call() throws Exception {
         System.out.println(Thread.currentThread().getName()+"\tcome in");
+        TimeUnit.SECONDS.sleep(3L);
         return 1024;
     }
 }

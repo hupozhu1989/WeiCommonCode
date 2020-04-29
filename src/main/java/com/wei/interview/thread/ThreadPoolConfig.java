@@ -9,7 +9,6 @@ public class ThreadPoolConfig {
     public static void main(String[] args) {
         //查看CPU核数
         System.out.println(Runtime.getRuntime().availableProcessors());
-
     }
     /*
         合理配置线程池
