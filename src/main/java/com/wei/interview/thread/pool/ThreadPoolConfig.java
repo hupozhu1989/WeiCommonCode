@@ -1,4 +1,4 @@
-package com.wei.interview.thread;
+package com.wei.interview.thread.pool;
 
 /**
  * 合理配置线程池

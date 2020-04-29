@@ -1,4 +1,4 @@
-package com.wei.interview.thread;
+package com.wei.interview.thread.pool;
 
 import java.util.concurrent.*;
 

@@ -1,4 +1,4 @@
-package com.wei.common.thread.bio.b;
+package com.wei.common.threadIO.bio.b;
 
 import java.io.IOException;
 import java.net.Socket;

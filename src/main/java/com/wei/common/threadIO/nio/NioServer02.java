@@ -1,4 +1,4 @@
-package com.wei.common.thread.nio;
+package com.wei.common.threadIO.nio;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

@@ -1,4 +1,4 @@
-package com.wei.common.thread.nio;
+package com.wei.common.threadIO.nio;
 
 import java.io.IOException;
 import java.io.OutputStream;

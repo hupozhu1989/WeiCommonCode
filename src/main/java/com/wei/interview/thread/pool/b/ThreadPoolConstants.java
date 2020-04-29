@@ -1,4 +1,4 @@
-package com.wei.common.thread.threadpoolexecutor;
+package com.wei.interview.thread.pool.b;
 
 public class ThreadPoolConstants {
     public static final int CORE_POOL_SIZE = 5;

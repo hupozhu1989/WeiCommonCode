@@ -1,9 +1,9 @@
-package com.wei.common.thread.threadpoolexecutor;
+package com.wei.interview.thread.pool.b;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import static com.wei.common.thread.threadpoolexecutor.ThreadPoolConstants.*;
+import static com.wei.interview.thread.pool.b.ThreadPoolConstants.*;
 
 public class ThreadPoolExecutorDemo {
 
