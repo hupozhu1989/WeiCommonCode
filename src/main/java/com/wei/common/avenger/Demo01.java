@@ -33,7 +33,7 @@ public class Demo01 {
         map.add("your-email","songjiang@163.com");
         map.add("age","28");
         map.add("job-timing","ok");
-        map.add("tel","2563-9658");
+        map.add("tel","02-6818-1963");
         map.add("address","大阪府");
         map.add("jyob-type","パート・アルバイト");//正社員  パート・アルバイト
         map.add("job-experience","床前明余光疑是地上霜");
