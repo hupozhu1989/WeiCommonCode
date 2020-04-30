@@ -28,22 +28,22 @@ public class Demo01 {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         MultiValueMap map = new LinkedMultiValueMap();
-        map.add("your-name","张三");
-        map.add("kana-name","大双方都");
-        map.add("your-email","12345@qq.com");
-        map.add("age","20");
-        map.add("job-timing","发达");
-        map.add("tel","爱的发的");
-        map.add("address","爱的发的是");
-        map.add("jyob-type","パート・アルバイト");
-        map.add("job-experience","爱的方式的法第三方士大夫收到发送到");
-        map.add("your-message","法师打发斯蒂芬阿道夫水电费");
+        map.add("your-name","宋江");
+        map.add("kana-name","及时雨");
+        map.add("your-email","songjiang@163.com");
+        map.add("age","28");
+        map.add("job-timing","ok");
+        map.add("tel","2563-9658");
+        map.add("address","大阪府");
+        map.add("jyob-type","パート・アルバイト");//正社員  パート・アルバイト
+        map.add("job-experience","床前明余光疑是地上霜");
+        map.add("your-message","举头望明月低头思故乡");
         HttpEntity requestBody = new HttpEntity(map, headers);
 
         ResponseEntity<Map> forEntity = null;
         Map body = null;
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1; i++) {
             /*forEntity=  restTemplate.postForEntity(url, requestBody,Map.class);
             body = forEntity.getBody();
             System.err.println(body.get("message"));*/
