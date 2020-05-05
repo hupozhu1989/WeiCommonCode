@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 @RunWith(SpringRunner.class)
 public class Test01 {
 
+    //把set方法注释打开,注释@AutoWiredWei
     @Test
     public void method01() throws Exception {
         UserController userController = new UserController();
@@ -40,13 +41,13 @@ public class Test01 {
         System.out.println(userController.getUserService());
     }
 
-    //把set属性注释掉,把@AutoWiredWei注解打开
+    //把set方法注释掉,把@AutoWiredWei注解打开
     @Test
     public void method02(){
         UserController userController = new UserController();
         Class<? extends UserController> clazz = userController.getClass();
         
-      //获取所有的属性值
+        //获取所有的属性值
         Stream.of(clazz.getDeclaredFields()).forEach(field -> {
             String name = field.getName();
             AutoWiredWei annotation = field.getAnnotation(AutoWiredWei.class);
@@ -62,17 +63,10 @@ public class Test01 {
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
-
             }
-
             System.out.println(userController.getUserService());
-
-
         });
-
-
-
-
     }
+
 
 }

@@ -7,14 +7,14 @@ package com.wei.spring.ioc;
  */
 public class UserController {
 
-    @AutoWiredWei
+    //@AutoWiredWei
     private UserService userService;
 
     public UserService getUserService() {
         return userService;
     }
 
-    /*public void setUserService(UserService userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
-    }*/
+    }
 }
