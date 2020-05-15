@@ -16,7 +16,7 @@ import java.util.Set;
  * @Version: 1.0
  */
 public class NioServer02 {
-    private Integer port = 9997;
+    private Integer port = 9000;
     private ServerSocketChannel server;
     private Selector selector;
     public NioServer02(Integer port){
@@ -109,7 +109,7 @@ public class NioServer02 {
     }
 
     public static void main(String[] args) {
-        new NioServer02(9997).start();
+        new NioServer02(9000).start();
     }
 
 }

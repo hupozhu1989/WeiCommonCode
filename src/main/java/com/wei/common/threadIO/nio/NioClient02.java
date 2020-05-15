@@ -14,7 +14,7 @@ public class NioClient02 {
         //但客户端单次发送请求
         Socket socket = null;
         try {
-            socket = new Socket("127.0.0.1",9997);
+            socket = new Socket("127.0.0.1",9000);
             OutputStream outputStream = socket.getOutputStream();
             String info = "测试发送数据";
             outputStream.write(info.getBytes("UTF-8"));
