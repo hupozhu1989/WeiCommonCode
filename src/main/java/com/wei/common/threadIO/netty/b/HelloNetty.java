@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.netty;
+package com.wei.common.threadIO.netty.b;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
@@ -22,6 +22,11 @@ class NettyServer {
     }
 
     public void serverStart() {
+        /*
+            boss 线程池和 work 线程池，其中 boss 线程池的线程负责处理请求的 accept 事件，当接收到 accept 事件的请求时，
+            把对应的 socket 封装到一个 NioSocketChannel 中，并交给 work线程池，其中 work 线程池负责请求的 read 和 write 事件，
+            由对应的 Handler 处理
+         */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         ServerBootstrap b = new ServerBootstrap();
@@ -34,10 +39,8 @@ class NettyServer {
                         ch.pipeline().addLast(new Handler());
                     }
                 });
-
         try {
             ChannelFuture f = b.bind(port).sync();
-
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -45,8 +48,6 @@ class NettyServer {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
-
-
     }
 }
 
@@ -56,13 +57,10 @@ class Handler extends ChannelInboundHandlerAdapter {
         //super.channelRead(ctx, msg);
         System.out.println("server: channel read");
         ByteBuf buf = (ByteBuf)msg;
-
         System.out.println(buf.toString(CharsetUtil.UTF_8));
 
         ctx.writeAndFlush(msg);
-
         ctx.close();
-
         //buf.release();
     }
 

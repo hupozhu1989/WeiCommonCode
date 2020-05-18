@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.netty;
+package com.wei.common.threadIO.netty.b;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -27,22 +27,17 @@ public class Client {
                         ch.pipeline().addLast(new ClientHandler());
                     }
                 });
-
         try {
             System.out.println("start to connect...");
             ChannelFuture f = b.connect("127.0.0.1", 9000).sync();
 
             f.channel().closeFuture().sync();
-
         } catch (InterruptedException e) {
             e.printStackTrace();
-
         } finally {
             workers.shutdownGracefully();
         }
-
     }
-
 
 }
 
@@ -59,8 +54,6 @@ class ClientHandler extends ChannelInboundHandlerAdapter {
                 //ctx.close();
             }
         });
-
-
     }
 
     @Override
