@@ -47,7 +47,7 @@ class Person implements Comparable<Person> {
         this.age = age;
     }
     /**
-     * TODO重写compareTo⽅法实现按年龄来排序
+     * 重写compareTo⽅法实现按年龄来排序
      */
     @Override
     public int compareTo(Person o) {
