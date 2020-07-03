@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.nio;
+package com.wei.interview.thread.nio;
 
 import java.io.IOException;
 import java.io.OutputStream;

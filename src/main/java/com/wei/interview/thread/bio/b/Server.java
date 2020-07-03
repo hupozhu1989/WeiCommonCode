@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.bio.b;
+package com.wei.interview.thread.bio.b;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

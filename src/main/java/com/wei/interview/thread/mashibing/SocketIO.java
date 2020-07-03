@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.mashibing;
+package com.wei.interview.thread.mashibing;
 
 import java.io.BufferedReader;
 import java.io.IOException;

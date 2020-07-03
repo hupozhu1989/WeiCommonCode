@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.mashibing;
+package com.wei.interview.thread.mashibing;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;

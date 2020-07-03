@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.netty.a;
+package com.wei.interview.thread.netty.a;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

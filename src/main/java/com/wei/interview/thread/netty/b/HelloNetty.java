@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.netty.b;
+package com.wei.interview.thread.netty.b;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;

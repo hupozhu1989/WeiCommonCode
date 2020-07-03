@@ -1,4 +1,4 @@
-package com.wei.common.threadIO.netty.a;
+package com.wei.interview.thread.netty.a;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
