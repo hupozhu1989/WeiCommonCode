@@ -1,4 +1,4 @@
-package com.wei.interview.kw_synchronized;
+package com.wei.interview.lock;
 
 /**
  * @author weizhenchao
