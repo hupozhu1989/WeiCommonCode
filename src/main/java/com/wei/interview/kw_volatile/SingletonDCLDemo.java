@@ -35,7 +35,7 @@ public class SingletonDCLDemo {
                         处理器在进行重新排序时必须要考虑指令之间的数据依赖性
 
                         实现方式：内存屏障(memory barrier)
-
+                        MESI协议,英特尔x86硬件层面多颗cpu保持缓存一致性的协议,与volatile无关
                      */
                 }
             }
