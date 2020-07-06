@@ -26,7 +26,7 @@ public class T05_AliQuestionAboutCF {
         System.in.read();
     }
 
-    private static void callback(Boolean result){
+    private static void callback(boolean result){
         if (false == result){
             //处理结束流程
             //通知其他线程结束(回滚)

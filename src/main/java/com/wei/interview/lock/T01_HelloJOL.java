@@ -7,16 +7,16 @@ import org.openjdk.jol.info.ClassLayout;
  * @version 1.0
  * @date：2020/7/2
  */
-public class HelloJOL {
+public class T01_HelloJOL {
     public static void main(String[] args) throws Exception{
-        //延时4s偏向锁--101
+        //默认情况 偏向锁有个时延，默认是4秒--101
         //TimeUnit.SECONDS.sleep(5);
 
-        //无锁--001
+        //锁 = 001 无锁态
         Object o = new Object();
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
 
-        //
+        //001 + hashcode
         o.hashCode();
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
 

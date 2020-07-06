@@ -34,6 +34,7 @@ public class SpinLockDemo {
 
     public static void main(String[] args) {
         SpinLockDemo spinLockDemo = new SpinLockDemo();
+        //t1线程
         new Thread(()->{
             spinLockDemo.myLock();
             try {
@@ -50,6 +51,7 @@ public class SpinLockDemo {
             e.printStackTrace();
         }
 
+        //t2线程
         new Thread(()->{
             spinLockDemo.myLock();
             try {

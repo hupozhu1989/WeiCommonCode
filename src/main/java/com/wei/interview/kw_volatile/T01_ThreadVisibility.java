@@ -3,7 +3,7 @@ package com.wei.interview.kw_volatile;
 import java.util.concurrent.TimeUnit;
 
 /**
- * volatile的可见性
+ * 线程的可见性
  * @author weizhenchao
  * @version 1.0
  * @date：2020/7/3

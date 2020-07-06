@@ -17,19 +17,21 @@ public class VolatileDemo {
      */
     public static void main(String[] args) {//main是一切运行方法的入口
         //volatile的可见性: 每个线程的工作内存  主物理内存
-//        seeOkByVolatile();
+        //seeOkByVolatile();
 
         //volatile不保证原子性
         automaticMethod();
     }
 
+    //打开或关闭number的volatile注释，证明volatile不保证原子性
+    //打开或关闭synchronized注释，证明synchronized的原子性
     public static void automaticMethod() {
         MyData myData = new MyData();
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 30; i++) {
             new Thread(() -> {
                 for (int j = 1; j <= 1000; j++) {
                     myData.addPlusPlus();
-                    myData.addAtomic();
+                    myData.addPlusPlusAtomic();
                 }
             },String.valueOf(i)).start();
         }
@@ -42,6 +44,7 @@ public class VolatileDemo {
         System.out.println(Thread.currentThread().getName()+"\t finally atomicInteger value: " + myData.atomicInteger);
     }
 
+    //打开或关闭number的volatile注释，证明其可见性
     public static void seeOkByVolatile() {
         MyData myData = new MyData();
         new Thread(() -> {
@@ -63,7 +66,7 @@ public class VolatileDemo {
 }
 
 class MyData {
-//    int number = 0;
+    //int number = 0;
     volatile int number = 0;
     AtomicInteger atomicInteger = new AtomicInteger();
 
@@ -71,11 +74,11 @@ class MyData {
         this.number = 60;
     }
 
-    public /*synchronized*/ void addPlusPlus(){
+    public synchronized void addPlusPlus(){
         this.number++;
     }
 
-    public void addAtomic(){
+    public void addPlusPlusAtomic(){
         atomicInteger.incrementAndGet();
     }
 
