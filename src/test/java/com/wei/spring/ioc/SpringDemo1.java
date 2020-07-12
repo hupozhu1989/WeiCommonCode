@@ -16,6 +16,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SpringDemo1 {
 	/*
 		更多资料  https://www.cnblogs.com/xiaoxi/p/5846416.html
+		ApplicationContext：加载配置文件的时候，就会将Spring管理的类都实例化。
+			ClassPathXmlApplicationContext	：加载类路径下的配置文件
+			FileSystemXmlApplicationContext	：加载文件系统下的配置文件
 	 */
 	//传统方式的调用
 	@Test

@@ -2,3 +2,11 @@ Spring IOC 容器源码分析
 https://www.javadoop.com/post/spring-ioc
 https://www.cnblogs.com/zrtqsk/p/3735273.html
 https://yemengying.com/2016/07/14/spring-bean-life-cycle/
+
+IOC【控制反转：将对象的创建权反转给（交给）Spring】，Spring的Bean管理：
+    XML方式：<bean>标签
+    注解方式：@Component--三个衍生注解@Controller @Service @Repository
+
+DI【依赖注入，前提必须有IOC的环境，Spring管理这个类的时候将类的依赖的属性注入（设置）进来】，Spring的属性注入：
+    XML方式：<bean>标签内的<constructor-arg>或<property>标签
+    注解方式：@Value  @Autowired  @Resource
