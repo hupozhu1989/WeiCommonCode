@@ -32,3 +32,27 @@ Spring的@Bean注解用于告诉方法，产生一个Bean对象，然后这个Be
 你就只能用@Bean把这个类或者方法注册到spring容器，因为用@Component你需要配置组件扫描到这个第三方类路径而且还要在别人源代码加上这个注解，
 很明显是不现实的。
 
+
+BeanDefinitionReader
+#BeanDefinition
+BeanFactory
+BeanFactoryPostProcess
+    ConfigurationClassPostProcess
+BeanPostProcess
+FactoryBean: 特殊的对象  .isSingleton()  .getObject()  .getObjectType()
+Environment
+
+
+
+
+实例化和初始化的区别
+
+
+1、Spring中是如何解决循环依赖问题
+
+
+2、为什么要使用三级缓存
+
+
+3、如果只保留二级缓存行不行
+
