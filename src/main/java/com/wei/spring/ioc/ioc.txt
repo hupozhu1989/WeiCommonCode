@@ -10,3 +10,25 @@ IOC【控制反转：将对象的创建权反转给（交给）Spring】，Sprin
 DI【依赖注入，前提必须有IOC的环境，Spring管理这个类的时候将类的依赖的属性注入（设置）进来】，Spring的属性注入：
     XML方式：<bean>标签内的<constructor-arg>或<property>标签
     注解方式：@Value  @Autowired  @Resource
+
+Spring的@Bean注解用于告诉方法，产生一个Bean对象，然后这个Bean对象交给Spring管理。产生这个Bean对象的方法Spring只会调用一次，
+随后这个Spring将会将这个Bean对象放在自己的IOC容器中。SpringIOC容器管理一个或者多个bean，这些bean都需要在@Configuration注解下进行创建，
+在一个方法上使用@Bean注解就表明这个方法需要交给Spring进行管理。
+
+@Bean和@Component的区别
+>注解作用
+@Component注解表明一个类会作为组件类，并告知Spring要为这个类创建bean。
+@Bean注解告诉Spring这个方法将会返回一个对象，这个对象要注册为Spring应用上下文中的bean。通常方法体中包含了最终产生bean实例的逻辑。
+>两者对比
+相同点：两者的结果都是为spring容器注册Bean.
+不同点：@Component 通常是通过类路径扫描来自动侦测以及自动装配到Spring容器中。
+　　　　@Bean 注解通常是我们在标有该注解的方法中定义产生这个bean的逻辑。
+>理解
+@Component（@Controller @Service @Repository）作用于类上，只有在我们的SpringBoot应用程序启用了组件扫描并且包含了被注解的类时才有效。
+通过组件扫描，Spring将扫描整个类路径，并将所有@Component注释类添加到Spring Context，这里有的不足就是会把整个类当成bean注册到spring容器上，
+如果这个类中并不是所有方法都需要注册为bean的话，会出现不需要的方法都注册成为bean，这时候必须确保这些不需要的方法也能注册为bean
+或者在扫描中加filter，过滤这些不需要的bean,否者spring将无法成功启动。
+@Bean相对来说就更加灵活了，它可以独立加在方法或者类上，按需注册到spring容器，而且如果你要用到第三方类库里面某个类或者方法的时候，
+你就只能用@Bean把这个类或者方法注册到spring容器，因为用@Component你需要配置组件扫描到这个第三方类路径而且还要在别人源代码加上这个注解，
+很明显是不现实的。
+
