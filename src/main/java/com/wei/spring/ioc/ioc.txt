@@ -33,19 +33,45 @@ Spring的@Bean注解用于告诉方法，产生一个Bean对象，然后这个Be
 很明显是不现实的。
 
 
-BeanDefinitionReader
-#BeanDefinition
-BeanFactory
-BeanFactoryPostProcess
-    ConfigurationClassPostProcess
-BeanPostProcess
+BeanDefinitionReader：该接口的作用就是加载Bean
+    BeanDefinition：Spring使用BeanDefinition来描述bean
+BeanFactory：BeanFactory是IOC容器的核心接口，它的职责包括：实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。BeanFactory只是个接口，
+    并不是IOC容器的具体实现，但是Spring容器给出了很多种实现，如DefaultListableBeanFactory、XmlBeanFactory、ApplicationContext等，
+    其中XmlBeanFactory就是常用的一个，该实现将以XML方式描述组成应用的对象及对象间的依赖关系。
+BeanFactoryPostProcessor：BeanFactory后置处理器，是对BeanDefinition对象进行修改。
+    BeanFactoryPostProcessor接口是针对bean容器的，它的实现类可以在当前BeanFactory初始化（spring容器加载bean定义文件）后，
+    bean实例化之前修改bean的定义属性，达到影响之后实例化bean的效果。也就是说，Spring允许BeanFactoryPostProcessor在容器实例化任何其它bean之前
+    读取配置元数据，并可以根据需要进行修改，例如可以把bean的scope从singleton改为prototype，也可以把property的值给修改掉。
+    可以同时配置多个BeanFactoryPostProcessor，并通过设置’order’属性来控制各个BeanFactoryPostProcessor的执行次序。
+
+    ConfigurationClassPostProcessor：ConfigurationClassPostProcessor是一个BeanFactory的后置处理器，因此它的主要功能是参与BeanFactory的建造，
+    在这个类中，会解析加了@Configuration的配置类，还会解析@ComponentScan、@ComponentScans注解扫描的包，以及解析@Import等注解
+BeanPostProcess：Bean后置处理器，是对生成的Bean对象进行修改。
+    BeanPostProcessor能在spring容器实例化bean之后，在执行bean的初始化方法前后，添加一些自己的处理逻辑。初始化方法包括以下两种：
+    1、实现InitializingBean接口的bean，对应方法为afterPropertiesSet
+    2、xml定义中，通过init-method设置的方法
 FactoryBean: 特殊的对象  .isSingleton()  .getObject()  .getObjectType()
-Environment
-
-
+    一般情况下，Spring通过反射机制利用<bean>的class属性指定实现类实例化Bean，在某些情况下，实例化Bean过程比较复杂，如果按照传统的方式，
+    则需要在<bean>中提供大量的配置信息。配置方式的灵活性是受限的，这时采用编码的方式可能会得到一个简单的方案。Spring为此提供了一个
+    org.springframework.bean.factory.FactoryBean的工厂类接口，用户可以通过实现该接口定制实例化Bean的逻辑。FactoryBean接口对于
+    Spring框架来说占用重要的地位，Spring自身就提供了70多个FactoryBean的实现。它们隐藏了实例化一些复杂Bean的细节，给上层应用带来了便利。
+    从Spring3.0开始，FactoryBean开始支持泛型，即接口声明改为FactoryBean<T>的形式
+Environment：
+    Spring应用的运行时简单地想象成两个部分：一个是Spring应用本身，一个是Spring应用所处的环境。Environment在容器中是一个抽象的集合，
+    是指应用环境的2个方面：profiles和properties。
+    1. Profile
+   profile配置是一个被命名的、bean定义的逻辑组，这些bean只有在给定的profile配置激活时才会注册到容器。不管是XML还是注解，Beans都有可能指派
+    给profile配置。Environment环境对象的作用，对于profiles配置来说，它能决定当前激活的是哪个profile配置，和哪个profile是默认。
+    2. Properties
+   properties属性可能来源于properties文件、JVM properties、system环境变量、JNDI、servlet context parameters上下文参数、专门的
+    properties对象，Maps等等。Environment对象的作用，对于properties来说，是提供给用户方便的服务接口、方便撰写配置、方便解析配置。
 
 
 实例化和初始化的区别
+    类的实例化：是指创建一个对象的过程。这个过程中会在堆中开辟内存，将一些非静态的方法，变量存放在里面。在程序执行的过程中，可以创建多个对象，
+        既多次实例化。每次实例化都会开辟一块新的内存。
+    类的初始化：是完成程序执行前的准备工作。在这个阶段，静态的（变量，方法，代码块）会被执行。同时在会开辟一块存储空间用来存放静态的数据。
+        初始化只在类加载的时候执行一次。
 
 
 1、Spring中是如何解决循环依赖问题
