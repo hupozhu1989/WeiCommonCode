@@ -11,6 +11,14 @@
 	<bean name="userDao" class="com.wei.spring.ioc.UserDaoImpl" >
 		<property name="name" value="猪八戒"/>
 	</bean>
+
+	<!--循环依赖	-->
+	<bean id="a" class="com.wei.spring.ioc.A">
+		<property name="b" ref="b"></property>
+	</bean>
+	<bean id="b" class="com.wei.spring.ioc.B">
+		<property name="a" ref="a"></property>
+	</bean>
 	
 	<!-- Spring的sBean的生命周期的配置=========== -->
 	<!--<bean id="customerDAO" class="com.itheima.spring.demo2.CustomerDAOImpl" scope="prototype" init-method="setup" destroy-method="destroy"/>-->
