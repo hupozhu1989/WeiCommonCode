@@ -52,7 +52,7 @@ public class SpringDemo1 {
 	 */
 	@Test
 	public void demo3(){
-		//ClassPathXmlApplicationContext
+		//ClassPathXmlApplicationContext--看源码：从构造方法的refresh()进入
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		//FileSystemXmlApplicationContext
 		//ApplicationContext applicationContext = new FileSystemXmlApplicationContext("src/test/resources/applicationContext.xml");
