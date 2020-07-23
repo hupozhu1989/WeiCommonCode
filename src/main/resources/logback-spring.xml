@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
     <!--定义日志文件的存储地址,使用绝对路径-->
     <property name="LOG_HOME" value="logs"/>
 
-    <!-- Console 输出设置 -->
+    <!-- Console控制台 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <!--格式化输出： %d表示日期， %thread表示线程名， %-5level表示级别从左显示5个字符宽度， %logger{36}表示36个字符内展示类的全名,
+             %M表示方法名, %msg表示日志消息， %n表示回车换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}:%M - %msg%n</pattern>
             <charset>utf8</charset>
         </encoder>
     </appender>
 
-    <!-- 按照每天生成日志文件 -->
+    <!-- 每天磁盘保存日志文件 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志文件输出的文件名-->
             <fileNamePattern>${LOG_HOME}/weicommon.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}:%M - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -34,14 +34,29 @@
         <appender-ref ref="FILE"/>
     </appender>
 
-
-    <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="false">
+    <!-- mybatis日志打印 additivity控制开关 -->
+    <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="true">
         <appender-ref ref="CONSOLE"/>
     </logger>
+
     <logger name="org.springframework.boot" level="DEBUG"/>
+
     <root level="info">
         <!--<appender-ref ref="ASYNC"/>-->
         <appender-ref ref="FILE"/>
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
+<!--
+    四个关键字：目的地-appender    布局-layout    控制单元-logger    级别-level
+    四个级别：debug＜info＜warn＜error，如果选择info，打印大于等于info级别的全部标注日志
+    多个数据源的时候，级别取精确，输出为各自
+    xml优先级高于properties
+
+    appender、layout、logger三者之间的关系：
+        ①每个appender后面必然需要跟随layout，指定自己的风格样式
+        ②每个logger都可以指定一个级别，同时引用多个appender
+        ③每个Appender也同时可以被多个Logger引用
+
+
+-->
