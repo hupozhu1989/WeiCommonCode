@@ -11,12 +11,15 @@ public class NullPointerExceptionDemo01 {
         p1.setName("小李");
 
         Person2 p2 = new Person2();
-        p2.setAge(p1.getAge());//java.lang.NullPointerException
+        p2.setName("小王");
+
+        //p2.setAge(p1.getAge());//自动拆箱  java.lang.NullPointerException
+        p1.setHeight(p2.getHeight());//自动装箱  不报错
+
         System.out.println("结束");
         /*
             自动装箱  Integer total = Integer.valueOf(99);
             自动拆箱  int prim = total.intValue();
-
          */
     }
 }
@@ -24,6 +27,7 @@ public class NullPointerExceptionDemo01 {
 class Person1{
     private Integer age;
     private String name;
+    private Integer height;
 
     public Integer getAge() {
         return age;
@@ -40,11 +44,20 @@ class Person1{
     public void setName(String name) {
         this.name = name;
     }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
 }
 
 class Person2{
     private int age;
     private String name;
+    private int height;
 
     public int getAge() {
         return age;
@@ -60,5 +73,13 @@ class Person2{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
