@@ -1,4 +1,4 @@
-package com.wei.common.java8date;
+package com.wei.common.java8.date;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;

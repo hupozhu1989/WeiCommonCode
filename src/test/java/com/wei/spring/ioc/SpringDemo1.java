@@ -62,5 +62,18 @@ public class SpringDemo1 {
 		//UserDaoImpl执行了...猪八戒
 	}
 
+	/**
+	 * 循环依赖
+	 * DefaultSingletonBeanRegistry.java
+	 * 一级缓存	Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
+	 * 二级缓存	Map<String, Object> earlySingletonObjects = new HashMap<>(16);
+	 * 三级缓存	Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>(16);
+	 */
+	@Test
+	public void demo4(){
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		A a = (A)applicationContext.getBean("a");
+		System.out.println("结束~~~");
+	}
 
 }

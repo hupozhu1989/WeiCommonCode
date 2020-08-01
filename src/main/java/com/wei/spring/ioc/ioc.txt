@@ -98,7 +98,7 @@ Environment：
 
 
 
-记录时间                               prepareRefresh();
+准备工作,如记录上下文开始时间 上下文关闭标志 上下文活动状态标志                               prepareRefresh();
 创建bean工厂,读取xml信息                obtainFreshBeanFactory();
 设置beanFactory属性值                  prepareBeanFactory(beanFactory);
 子类扩展                                postProcessBeanFactory(beanFactory);

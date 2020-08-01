@@ -8,9 +8,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Spring的入门的配置==================== -->
-	<bean name="userDao" class="com.wei.spring.ioc.UserDaoImpl" >
+	<!--<bean name="userDao" class="com.wei.spring.ioc.UserDaoImpl" >
 		<property name="name" value="猪八戒"/>
-	</bean>
+	</bean>-->
 
 	<!--循环依赖	-->
 	<bean id="a" class="com.wei.spring.ioc.A">
