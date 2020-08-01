@@ -16,9 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SpringDemo1 {
 	/*
 		更多资料  https://www.cnblogs.com/xiaoxi/p/5846416.html
-		ApplicationContext：加载配置文件的时候，就会将Spring管理的类都实例化。
-			ClassPathXmlApplicationContext	：加载类路径下的配置文件
-			FileSystemXmlApplicationContext	：加载文件系统下的配置文件
 	 */
 	//传统方式的调用
 	@Test
@@ -45,10 +42,11 @@ public class SpringDemo1 {
 	}
 
 	/**
-	 * Spring-ApplicationContext
-	 *	ClassPathXmlApplicationContext-在 ClassPath 中寻找 xml 配置文件，根据 xml 文件内容来构建 ApplicationContext
-	 *	FileSystemXmlApplicationContext-构造函数需要一个 xml 配置文件在系统中的路径，其他和 ClassPathXmlApplicationContext 基本上一样
-	 *	AnnotationConfigApplicationContext-基于注解来使用的，它不需要配置文件，采用 java 配置类和各种注解来配置
+	 *  查看Spring启动流程,userDao
+	 *  Spring-ApplicationContext：加载配置文件的时候，就会将Spring管理的类都实例化。
+	 *	ClassPathXmlApplicationContext--在classPath中寻找 xml 配置文件，根据 xml 文件内容来构建 ApplicationContext
+	 *	FileSystemXmlApplicationContext--构造函数需要一个 xml 配置文件在系统中的路径，其他和 ClassPathXmlApplicationContext 基本上一样
+	 *	AnnotationConfigApplicationContext--基于注解来使用的，它不需要配置文件，采用 java 配置类和各种注解来配置
 	 */
 	@Test
 	public void demo3(){
@@ -58,12 +56,13 @@ public class SpringDemo1 {
 		//ApplicationContext applicationContext = new FileSystemXmlApplicationContext("src/test/resources/applicationContext.xml");
 		UserDao userDAO = (UserDao)applicationContext.getBean("userDao");
 		userDAO.save();
+		System.out.println("结束~~~");
 		//打印结果:
 		//UserDaoImpl执行了...猪八戒
 	}
 
 	/**
-	 * 循环依赖
+	 * 循环依赖,A B
 	 * DefaultSingletonBeanRegistry.java
 	 * 一级缓存	Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
 	 * 二级缓存	Map<String, Object> earlySingletonObjects = new HashMap<>(16);
