@@ -32,11 +32,12 @@ BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例�
 5    BenzCar's engine not setting
 6    BenzCar postConstruct
 7    BenzCar's engine installed, in postConstruct
-8    BenzCar initializingBean after propertieSet
-9    BenzCar's engine installed, in initializingBean
-10   here is invoke  engine:fire
-11   BenzCar start
-12   here is invoke  engine:fire
+8    here is invoke  engine:fire
+9    BenzCar initializingBean after propertieSet
+10   BenzCar's engine installed, in initializingBean
+11   here is invoke  engine:fire
+12   BenzCar start
+13   here is invoke  engine:fire
 
 第1行： specialBeanForEngine  bean 先生成
 第2行： EngineFactory 调用 getObject()方法生产 Engine代理对象

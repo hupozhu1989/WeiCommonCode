@@ -21,6 +21,7 @@ public class SpecialBeanForEngine implements BeanFactoryPostProcessor, BeanNameA
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         BeanDefinitionRegistry bdr = (BeanDefinitionRegistry)beanFactory;
         GenericBeanDefinition gbd = new GenericBeanDefinition();
+        //添加 EngineFactory.class类的Bean
         gbd.setBeanClass(EngineFactory.class);
         gbd.setScope(BeanDefinition.SCOPE_SINGLETON);
         gbd.setAutowireCandidate(true);
@@ -33,6 +34,7 @@ public class SpecialBeanForEngine implements BeanFactoryPostProcessor, BeanNameA
         @Override
         public Engine getObject() throws Exception {
             System.err.println("EngineFactory  to build Engine01 , EngineFactory :"+ name);
+            //使用动态代理生产Engine接口的代理对象
             Engine prox = (Engine) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[]{Engine.class}, this);
             return prox;
         }
