@@ -2,11 +2,12 @@ package com.wei.springboot.controller;
 
 import com.wei.common.resttemplate.ApiResult;
 import com.wei.common.resttemplate.FriendlyLink;
+import com.wei.springboot.entity.TStudent;
+import com.wei.springboot.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ import java.util.List;
 @RequestMapping("/mycontroller")
 public class MyController {
 
+    @Autowired
+    private StudentService studentService;
+
     @ApiOperation("获取友情链接")
     @GetMapping("/queryFriendlyLinks")
     public ApiResult<List<FriendlyLink>> queryFriendlyLinks(){
@@ -32,6 +36,14 @@ public class MyController {
         list.add(new FriendlyLink(85,"1484895149000","网贷之家","http://www.wdzj.com"));
         list.add(new FriendlyLink(85,"1526437500000","红岭创投","https://www.my089.com/"));
         return new ApiResult<>("000","OK",list);
+    }
+
+    //http://localhost:8088/mycontroller/queryStudent/1
+    @ApiOperation("获取所有学生")
+    @GetMapping("/queryStudent/{id}")
+    public ApiResult<TStudent> queryStudentById(@PathVariable("id") Integer id){
+        TStudent tStudent = studentService.queryStudentById(id);
+        return new ApiResult<TStudent>("000","OK",tStudent);
     }
 
 }
