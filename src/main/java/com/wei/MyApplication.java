@@ -16,6 +16,10 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 public class MyApplication {
+    /*
+        启动成功:
+        Started MyApplication in 5.581 seconds (JVM running for 6.32)
+     */
     public static void main(String[] args) {
         SpringApplication.run(MyApplication.class, args);
     }

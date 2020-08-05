@@ -3,6 +3,8 @@ package com.wei.springboot.dao;
 import com.wei.springboot.entity.TStudent;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface TStudentMapper {
     /**
@@ -52,4 +54,6 @@ public interface TStudentMapper {
      * @mbg.generated Wed Aug 05 15:11:42 GMT+08:00 2020
      */
     int updateByPrimaryKey(TStudent record);
+
+    List<TStudent> selectAllStudents();
 }

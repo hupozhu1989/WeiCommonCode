@@ -119,4 +119,7 @@
       gender = #{gender,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAllStudents" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from t_student
+  </select>
 </mapper>

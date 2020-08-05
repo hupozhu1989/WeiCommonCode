@@ -1,5 +1,6 @@
 package com.wei.springboot.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.wei.common.resttemplate.ApiResult;
 import com.wei.common.resttemplate.FriendlyLink;
 import com.wei.springboot.entity.TStudent;
@@ -39,11 +40,19 @@ public class MyController {
     }
 
     //http://localhost:8088/mycontroller/queryStudent/1
-    @ApiOperation("获取所有学生")
+    @ApiOperation("根据id获取学生")
     @GetMapping("/queryStudent/{id}")
     public ApiResult<TStudent> queryStudentById(@PathVariable("id") Integer id){
         TStudent tStudent = studentService.queryStudentById(id);
-        return new ApiResult<TStudent>("000","OK",tStudent);
+        return new ApiResult<>("000","OK",tStudent);
+    }
+
+    //http://localhost:8088/mycontroller/queryStudentPage
+    @ApiOperation("分页获取学生")
+    @PostMapping("/queryStudentPage")
+    public ApiResult<PageInfo> queryStudentPage(@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
+        PageInfo<TStudent> pageInfo = studentService.queryStudentPage(pageNo, pageSize);
+        return new ApiResult<>("000","OK",pageInfo);
     }
 
 }
