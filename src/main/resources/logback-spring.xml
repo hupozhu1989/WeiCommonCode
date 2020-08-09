@@ -35,7 +35,7 @@
     </appender>
 
     <!-- mybatis日志打印 additivity控制开关 -->
-    <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="true">
+    <logger name="org.apache.ibatis.cache.decorators.LoggingCache" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 import javax.annotation.PostConstruct;
 
 /*
-    initMethod、afterPropertiesSet()、@PostConstruct三选一即可
+    @PostConstruct、afterPropertiesSet()、initMethod三选一即可，先后顺序
  */
 public class BenzCar implements InitializingBean {
     public Engine engine;
@@ -18,10 +18,16 @@ public class BenzCar implements InitializingBean {
             System.err.println("BenzCar's engine installed");
         }
     }
-    
-    void start(){
-        System.err.println("BenzCar start");
-        engine.fire();
+
+    @PostConstruct
+    public void postConstruct(){
+        System.err.println("BenzCar postConstruct");
+        if(engine==null){
+            System.err.println("BenzCar's engine not setting, in postConstruct");
+        }else{
+            System.err.println("BenzCar's engine installed, in postConstruct");
+            engine.fire();
+        }
     }
 
     @Override
@@ -35,17 +41,9 @@ public class BenzCar implements InitializingBean {
         }
     }
 
-
-    
-    @PostConstruct
-    public void postConstruct(){
-        System.err.println("BenzCar postConstruct");
-        if(engine==null){
-            System.err.println("BenzCar's engine not setting, in postConstruct");
-        }else{
-            System.err.println("BenzCar's engine installed, in postConstruct");
-            engine.fire();
-        }
+    void start(){
+        System.err.println("BenzCar start");
+        engine.fire();
     }
 
 }
