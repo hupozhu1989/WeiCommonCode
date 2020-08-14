@@ -35,8 +35,8 @@ public class SpecialBeanForEngine implements BeanFactoryPostProcessor, BeanNameA
         public Engine getObject() throws Exception {
             System.err.println("EngineFactory  to build Engine01 , EngineFactory :"+ name);
             //使用动态代理生产Engine接口的代理对象
-            Engine prox = (Engine) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[]{Engine.class}, this);
-            return prox;
+            Engine proxy = (Engine) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[]{Engine.class}, this);
+            return proxy;
         }
 
         @Override

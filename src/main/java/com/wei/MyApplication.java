@@ -19,6 +19,7 @@ public class MyApplication {
     /*
         启动成功:
         Started MyApplication in 5.581 seconds (JVM running for 6.32)
+        SpringBoot内置tomcat启动原理: https://www.cnblogs.com/sword-successful/p/11383723.html
      */
     public static void main(String[] args) {
         SpringApplication.run(MyApplication.class, args);
@@ -40,6 +41,8 @@ public class MyApplication {
         ③@PostConstruct注解
         Spring不推荐使用InitializationBean 来调用其初始化方法，因为它不必要地将代码耦合到Spring。Spring推荐使用@PostConstruct注解
         或者为POJO类指定其初始化方法这两种方式来完成初始化。
+
+        执行顺序如下:Bean的构造方法、@PostConstruct注解、InitializationBean、initMethod
 
         BenzCar类（奔驰汽车类）有成员属性Engine（发动机），Engine是接口，无具体的实现类。本代码例子，通过BeanFactoryPostProcessor和FactoryBean,
         动态代理三项技术实现给BenzCar装配上Engine
