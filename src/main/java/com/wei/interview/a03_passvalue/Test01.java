@@ -1,4 +1,4 @@
-package com.wei.interview.passvalue03;
+package com.wei.interview.a03_passvalue;
 
 import java.util.Arrays;
 

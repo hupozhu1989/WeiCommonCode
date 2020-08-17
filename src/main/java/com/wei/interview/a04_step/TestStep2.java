@@ -1,4 +1,4 @@
-package com.wei.interview.step04;
+package com.wei.interview.a04_step;
 
 /**
  * 有n步台阶，一次只能上1步或2步，共有多少种走法？

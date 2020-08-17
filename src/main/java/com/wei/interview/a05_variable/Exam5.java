@@ -1,4 +1,4 @@
-package com.wei.interview.variable05;
+package com.wei.interview.a05_variable;
 
 public class Exam5 {
 	static int s;//成员变量，类变量

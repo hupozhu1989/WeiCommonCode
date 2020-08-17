@@ -1,4 +1,4 @@
-package com.wei.interview.passvalue03;
+package com.wei.interview.a03_passvalue;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.wei.interview.passvalue03;
+package com.wei.interview.a03_passvalue;
 
 /**
  * 栈管运行 堆管存储
@@ -10,7 +10,7 @@ public class Test02 {
     public void changeValue1(int age){
         age = 30;
     }
-    public void changeValue2(com.wei.interview.passvalue03.Person person){
+    public void changeValue2(com.wei.interview.a03_passvalue.Person person){
         person.setPersonName("xxx");
     }
     public void changeValue3(String str){

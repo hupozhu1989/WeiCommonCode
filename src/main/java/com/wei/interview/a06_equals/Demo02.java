@@ -1,4 +1,4 @@
-package com.wei.interview.equals06;
+package com.wei.interview.a06_equals;
 
 /**
  * @author weizhenchao

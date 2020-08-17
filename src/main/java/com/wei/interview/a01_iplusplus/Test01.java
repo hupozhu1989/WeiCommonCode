@@ -1,4 +1,4 @@
-package com.wei.interview.iplusplus01;
+package com.wei.interview.a01_iplusplus;
 
 public class Test01 {
 	public static void main(String[] args) {

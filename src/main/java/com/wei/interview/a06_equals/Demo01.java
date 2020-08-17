@@ -1,6 +1,6 @@
-package com.wei.interview.equals06;
+package com.wei.interview.a06_equals;
 
-import com.wei.interview.passvalue03.Person;
+import com.wei.interview.a03_passvalue.Person;
 
 import java.util.HashSet;
 import java.util.Set;
