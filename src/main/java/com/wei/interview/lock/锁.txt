@@ -1,3 +1,4 @@
+https://gitee.com/SnailClimb/JavaGuide/blob/master/docs/java/Multithread/synchronized.md
 公平锁
     是指多个线程按照申请锁的顺序来获取锁类似排队打饭 先来后到
 非公平锁
