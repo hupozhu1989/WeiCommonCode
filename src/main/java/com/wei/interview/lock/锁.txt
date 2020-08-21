@@ -24,6 +24,14 @@ https://gitee.com/SnailClimb/JavaGuide/blob/master/docs/java/Multithread/synchro
 升级机制:线程超过10次自旋,-XX:PreBlockSpin,或者自旋线程数超过CPU核数的一半,1.6之后,加入自适应自旋Adaptive Self Spinning,由jvm自己控制
 
 
+>>线程间的同步的⽅式有哪些呢?
+线程同步是两个或多个共享关键资源的线程的并发执⾏。应该同步线程以避免关键的资源使⽤冲突。操作系统⼀般有下⾯三种线程同步的⽅式：
+1.互斥量(Mutex)：采⽤互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有⼀个，所以可以保证公共资源不会被多个线程同时访问。
+⽐如 Java 中的 synchronized 关键词和各种 Lock 都是这种机制。
+2.信号量(Semaphore)：它允许同⼀时刻多个线程访问同⼀资源，但是需要控制同⼀时刻访问此资源的最⼤线程数量
+3.事件(Event)：Wait/Notify：通过通知操作的⽅式来保持多线程同步，还可以⽅便的实现多线程优先级的⽐较操作
+
+
 AQS是⼀个⽤来构建锁和同步器的框架(AbstractQueuedSynchronizer)，使⽤AQS能简单且⾼效地构造出应⽤⼴泛的⼤量的同步器，⽐如我们提到的ReentrantLock、
 Semaphore，其他的诸如ReentrantReadWriteLock、SynchronousQueue、FutureTask等等皆是基于AQS的。当然，我们⾃⼰也能利⽤AQS⾮常轻松容易地
 构造出符合我们⾃⼰需求的同步器。
