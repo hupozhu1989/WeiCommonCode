@@ -1,11 +1,15 @@
 package com.wei.spring.ioc;
 
+import com.wei.springboot.config.AppConfig;
+import com.wei.springboot.dao.TStudentMapper;
+import com.wei.springboot.entity.TStudent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -51,6 +55,7 @@ public class SpringDemo1 {
 	@Test
 	public void demo3(){
 		//ClassPathXmlApplicationContext--看源码：从构造方法的refresh()进入
+		//https://javadoop.com/post/spring-ioc
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		//FileSystemXmlApplicationContext
 		//ApplicationContext applicationContext = new FileSystemXmlApplicationContext("src/test/resources/applicationContext.xml");
@@ -75,4 +80,20 @@ public class SpringDemo1 {
 		System.out.println("结束~~~");
 	}
 
+	@Test
+	public void demo5(){
+		/*
+			jdk动态代理产生mapper的代理对象   mybatis的动态代理
+		 */
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		TStudentMapper mapper = applicationContext.getBean(TStudentMapper.class);
+		TStudent student = mapper.selectByPrimaryKey(1);
+		System.out.println(student.toString());
+
+		/*SqlSessionFactory sqlSessionFactory = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		//mapperProxyFactory.newInstance(sqlSession);
+		TStudentMapper mapper2 = session.getMapper(TStudentMapper.class);*/
+
+	}
 }
