@@ -1,4 +1,4 @@
-package com.wei.interview.lock;
+package com.wei.interview.forkjoin;
 
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
