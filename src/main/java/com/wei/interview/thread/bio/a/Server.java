@@ -12,7 +12,7 @@ import java.net.Socket;
 public class Server {
     public static void main(String[] args) {
         try {
-            //1.创建一个服务器端Socket，即ServerSocket，指定绑定的端口，并监听此端口
+            //1.创建 ServerSocket 对象并且绑定一个端口
             ServerSocket serverSocket=new ServerSocket(9000);
             Socket socket=null;
             //记录客户端的数量
@@ -20,9 +20,9 @@ public class Server {
             System.out.println("***服务器即将启动，等待客户端的连接***");
             //循环监听等待客户端的连接
             while(true){
-                //调用accept()方法开始监听，等待客户端的连接
+                //2.通过 accept() 方法监听客户端请求，这个方法会一直阻塞到有一个连接建立
                 socket=serverSocket.accept();
-                //创建一个新的线程
+                //创建一个新的线程处理socket或者用线程池
                 ServerThread serverThread=new ServerThread(socket);
                 //启动线程
                 serverThread.start();
@@ -70,9 +70,10 @@ class ServerThread extends Thread {
         BufferedReader br = null;
         OutputStream os = null;
         try {
-            //获取输入流，并读取客户端信息
+            //3.通过输入流读取客户端发送的请求信息
             is = new InputStreamReader(socket.getInputStream());
             br = new BufferedReader(is);
+            //4.通过输出流向客户端发送响应信息
             os = socket.getOutputStream();
 
             String line = null;
