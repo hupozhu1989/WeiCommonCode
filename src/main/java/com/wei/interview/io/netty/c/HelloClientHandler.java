@@ -20,7 +20,7 @@ public class HelloClientHandler extends ChannelInboundHandlerAdapter {
     //客户端和服务端的连接建立之后就会被调用
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        System.out.println("client sen msg to server " + message);
+        System.out.println("client send msg to server " + message);
         ctx.writeAndFlush(Unpooled.copiedBuffer(message, CharsetUtil.UTF_8));
     }
 

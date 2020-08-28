@@ -40,10 +40,18 @@ public final class HelloClient {
                         }
                     });
             // 6.尝试建立连接
-            ChannelFuture f = b.connect(host, port).sync();
+            //ChannelFuture f = b.connect(host, port).sync();
+            ChannelFuture f = b.connect(host,port).addListener(future -> {
+                if (future.isSuccess()){
+                    System.out.println("连接成功!");
+                }else {
+                    System.out.println("连接失败!");
+                }
+            }).sync();
             // 7.等待连接关闭（阻塞，直到Channel关闭）
             f.channel().closeFuture().sync();
         } finally {
+            // 优雅关闭相关线程组资源
             group.shutdownGracefully();
         }
     }
