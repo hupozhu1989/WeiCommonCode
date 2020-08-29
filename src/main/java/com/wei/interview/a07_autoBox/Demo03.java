@@ -11,11 +11,11 @@ public class Demo03 {
         Boolean i3 = true;
         Boolean i4 = true;
 
-        System.out.println(i1 == i2);//true
-        System.out.println(i3 == i4);//true
+        System.out.println(i1 == i2);
+        System.out.println(i3 == i4);
         
         Boolean b1= new Boolean(true);
         Boolean b2= new Boolean(true);
-        System.out.println(b1 == b2);//false
+        System.out.println(b1 == b2);
     }
 }

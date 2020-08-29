@@ -18,7 +18,7 @@ package com.wei.interview.a02_init;
  * 因为创建了两个Son对象，因此实例化方法<init>执行两次
  * （9）（3）（2）（9）（8）（7）
  * 普通代码块在每次创建对象的时候都会被调用,并且普通代码块的执行次序优先于构造方法
- * 静态代码块>普通代码块>构造方法
+ * 静态代码块 > 普通代码块 > 构造方法
  */
 public class Son extends Father{
 	private int i = test();
@@ -43,7 +43,7 @@ public class Son extends Father{
 	}
 	public static void main(String[] args) {
 		Son s1 = new Son();
-		System.out.println();
+		System.out.println("==============");
 		Son s2 = new Son();
 	}
 }

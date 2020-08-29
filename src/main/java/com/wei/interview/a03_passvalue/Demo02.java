@@ -6,18 +6,18 @@ package com.wei.interview.a03_passvalue;
  * @version 1.0
  * @date：2020/3/27
  */
-public class Test02 {
+public class Demo02 {
     public void changeValue1(int age){
         age = 30;
     }
-    public void changeValue2(com.wei.interview.a03_passvalue.Person person){
+    public void changeValue2(Person person){
         person.setPersonName("xxx");
     }
     public void changeValue3(String str){
         str = "xxx";
     }
     public static void main(String[] args) {
-        Test02 test = new Test02();
+        Demo02 test = new Demo02();
         int age = 20;
         test.changeValue1(age);
         System.out.println("age------"+age);

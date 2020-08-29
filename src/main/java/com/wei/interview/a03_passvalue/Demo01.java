@@ -2,11 +2,11 @@ package com.wei.interview.a03_passvalue;
 
 import java.util.Arrays;
 
-public class Test01 {
+public class Demo01 {
 	/*
 		①形参是基本数据类型
 			传递数据值
-		②实参是引用数据类型
+		②行参是引用数据类型
 			传递地址值
 			特俗的类型：String、包装类等对象的不可变性
 		栈管运行 堆管存储
@@ -34,6 +34,7 @@ public class Test01 {
 		m.a += 1;
 	}
 }
+
 class MyData{
 	int a = 10;
 }

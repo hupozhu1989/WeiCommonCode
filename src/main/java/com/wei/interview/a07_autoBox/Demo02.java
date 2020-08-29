@@ -15,7 +15,7 @@ public class Demo02 {
         Double i3 = 200.0;
         Double i4 = 200.0;
 
-        System.out.println(i1 == i2);//false
-        System.out.println(i3 == i4);//false
+        System.out.println(i1 == i2);
+        System.out.println(i3 == i4);
     }
 }

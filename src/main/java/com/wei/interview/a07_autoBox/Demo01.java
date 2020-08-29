@@ -14,7 +14,7 @@ public class Demo01 {
         Integer i3 = 200;
         Integer i4 = 200;
 
-        System.out.println(i1 == i2);//true
-        System.out.println(i3 == i4);//false
+        System.out.println(i1 == i2);
+        System.out.println(i3 == i4);
     }
 }
