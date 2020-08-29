@@ -35,7 +35,7 @@ public class ABADemo {
             atomicStampedReference.compareAndSet(100,101,atomicStampedReference.getStamp(),atomicStampedReference.getStamp()+1);
             System.out.println(Thread.currentThread().getName()+"\t第2次版本号:"+atomicStampedReference.getStamp()+"\t最新值:"+atomicStampedReference.getReference());
             atomicStampedReference.compareAndSet(101,100,atomicStampedReference.getStamp(),atomicStampedReference.getStamp()+1);
-            System.out.println(Thread.currentThread().getName()+"\t第2次版本号:"+atomicStampedReference.getStamp()+"\t最新值:"+atomicStampedReference.getReference());
+            System.out.println(Thread.currentThread().getName()+"\t第3次版本号:"+atomicStampedReference.getStamp()+"\t最新值:"+atomicStampedReference.getReference());
 
         },"t3").start();
 

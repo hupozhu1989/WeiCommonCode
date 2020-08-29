@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 线程通信之生产者消费者传统版
+ * 线程通信之condition.await()、condition.signalAll()
  * @author weizhenchao
  * @version 1.0
  * @date：2020/3/29

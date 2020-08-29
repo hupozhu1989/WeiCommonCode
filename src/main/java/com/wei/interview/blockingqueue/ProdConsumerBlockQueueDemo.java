@@ -51,6 +51,9 @@ class MyResource{
         System.out.println(blockingQueue.getClass().getName());
     }
 
+    /**
+     * 生产者生产
+     */
     public void myProd() throws Exception {
         String data = null;
         boolean returnValue;
@@ -71,6 +74,9 @@ class MyResource{
         System.out.println(Thread.currentThread().getName() + "\t停止，表示flag=" + flag);
     }
 
+    /**
+     * 消费者消费
+     */
     public void myConsumer() throws Exception {
         String result = null;
         while (flag){

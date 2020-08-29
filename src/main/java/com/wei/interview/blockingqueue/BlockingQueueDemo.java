@@ -12,14 +12,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class BlockingQueueDemo {
     public static void main(String[] args) throws Exception{
-//        test_add();
-//        test_remove();
-//        test_offer();
-//        test_poll();
-//        test_put();
-        test_take();
-//        test_offer2();
-//        test_poll2();
+        //test_add();
+        //test_remove();
+        //test_offer();
+        //test_poll();
+        //test_put();
+        //test_take();
+        //test_offer2();
+        test_poll2();
 
         /*
             off(e,time,unit)
@@ -52,9 +52,13 @@ public class BlockingQueueDemo {
     private static void test_put() throws InterruptedException {
         BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue(3);
         blockingQueue.put(1);
+        System.out.println("1~完成");
         blockingQueue.put(2);
+        System.out.println("2~完成");
         blockingQueue.put(3);
+        System.out.println("3~完成");
         blockingQueue.put(4);
+        System.out.println("4~完成");
     }
 
     private static void test_poll() {
@@ -100,7 +104,7 @@ public class BlockingQueueDemo {
           检查      element()   peek()      不可用      不可用
 
         抛出异常    当阻塞队列满时,再往队列里面add插入元素会抛IllegalStateException: Queue full
-                   当阻塞队列空时,再往队列Remove元素时候回抛出NoSuchElementException
+                   当阻塞队列空时,再往队列remove元素时候回抛出NoSuchElementException
         返回特殊值  插入方法,成功返回true 失败返回false
                    移除方法,成功返回元素,队列里面没有就返回null
         一直阻塞    当阻塞队列满时,生产者继续往队列里面put元素,队列会一直阻塞直到put数据or响应中断退出
@@ -109,7 +113,7 @@ public class BlockingQueueDemo {
 
         常用:
             ArrayBlockingQueue: 由数组结构组成的有界阻塞队列.
-            LinkedBlockingDeque: 由链表结构组成的有界(但大小默认值Integer>MAX_VALUE)阻塞队列.
+            LinkedBlockingDeque: 由链表结构组成的有界(但大小默认值Integer.MAX_VALUE)阻塞队列.
             SynchronousQueue:不存储元素的阻塞队列,也即是单个元素的队列.
 
      */
