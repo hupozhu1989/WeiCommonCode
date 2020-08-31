@@ -11,8 +11,8 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatchDemo {
 
     public static void main(String[] args) throws Exception{
-        //closeDoor();
-        mieLiuGuo();
+        closeDoor();
+        //mieLiuGuo();
         /*
             CountDownLatch（倒计时器）： CountDownLatch是⼀个同步⼯具类，⽤来协调多个线程之间的同步。这个⼯具通常⽤来控制线程等待，
             它可以让某⼀个线程等待直到倒计时结束，再开始执⾏。

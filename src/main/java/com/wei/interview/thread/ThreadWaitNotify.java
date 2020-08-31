@@ -14,7 +14,7 @@ public class ThreadWaitNotify {
         final Thread download = new Thread() {
             public void run() {
                 System.out.println("download:开始下载图片");
-                for(int i = 0; i <= 100; i++){
+                for(int i = 1; i <= 100; i++){
                     System.out.println("download:已完成" + i + "%");
                     try{
                         Thread.sleep(50);
@@ -31,7 +31,7 @@ public class ThreadWaitNotify {
                     object.notify();
                 }
 
-                System.out.println("download:开始下载附件");
+                /*System.out.println("download:开始下载附件");
                 for(int i = 0; i <= 100; i++){
                     System.out.println("download:已完成" + i + "%");
                     try{
@@ -40,7 +40,7 @@ public class ThreadWaitNotify {
                     catch(InterruptedException e){
                     }
                 }
-                System.out.println("download:附件下载完毕");
+                System.out.println("download:附件下载完毕");*/
             }
 
         };

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class T01_ThreadVisibility {
     //打开或关闭volatile
-    private static /*volatile*/ boolean running = true;
+    private static volatile boolean running = true;
 
     public static void main(String[] args) throws InterruptedException {
         new Thread(()->{

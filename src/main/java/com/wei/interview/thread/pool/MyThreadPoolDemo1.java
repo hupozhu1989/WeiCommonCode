@@ -99,7 +99,7 @@ class ThreadDemo extends Thread{
             ②.当线程池中的线程数目达到corePoolSize后,就会把到达的任务放入到任务队列当中.
         2.maximumPoolSize:线程池能够容纳同时执行的最大线程数,此值大于等于1
         3.keepAliveTime:多余的空闲线程存活时间,当空间时间达到keepAliveTime值时,多余的线程会被销毁直到只剩下corePoolSize个线程为止
-            默认情况下:只有当线程池中的线程数大于corePoolSize时,keepAliveTime才会起作用,直到线程中的线程数不大于corepoolSIze
+            默认情况下:只有当线程池中的线程数大于corePoolSize时,keepAliveTime才会起作用,直到线程中的线程数不大于corePoolSize
         4.unit:keepAliveTime的单位
         5.workQueue:任务队列,被提交但尚未被执行的任务.
         6.threadFactory:表示生成线程池中工作线程的线程工厂,用户创建新线程,一般用默认即可

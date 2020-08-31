@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class DeadLockDemo {
     public static void main(String[] args) {
-         //死锁是指两个或者以上的进程在执行过程中,因争夺资源而造成的一种相互等待的现象,若无外力干涉那他们都将无法推进下去
+        //死锁是指两个或者以上的线程在执行过程中,因争夺资源而造成的一种相互等待的现象,若无外力干涉那他们都将无法推进下去
         String lockA = "lockA";
         String lockB = "lockB";
         new Thread(new HoldThread(lockA, lockB), "threadAAA").start();

@@ -40,7 +40,7 @@ public class Server {
         传统的HTTP服务器的原理
         1.创建一个ServerSocket，监听并绑定一个端口
         2.一系列客户端来请求这个端口
-        3.服务器使用Accept，获得一个来自客户端的Socket连接对象
+        3.服务器使用accept()，获得一个来自客户端的Socket连接对象
         4.启动一个新线程处理连接
             ①读Socket，得到字节流
             ②解码协议，得到Http请求对象

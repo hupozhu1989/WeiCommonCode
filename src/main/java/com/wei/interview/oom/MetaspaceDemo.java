@@ -17,7 +17,7 @@ public class MetaspaceDemo {
         故障现象: Caused by: java.lang.OutOfMemoryError: Metaspace
 
         Java8及之后的版本使用Metaspace来替代永久代
-        模拟Meatspace空间溢出,不断生成类往元空间灌,类占据的空间总是会超过Meatspace指定的空间大小
+        模拟Metaspace空间溢出,不断生成类往元空间灌,类占据的空间总是会超过Metaspace指定的空间大小
      */
     static class OOMTest{}
     public static void main(String[] args) {

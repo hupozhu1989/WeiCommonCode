@@ -1,6 +1,6 @@
 https://gitee.com/SnailClimb/JavaGuide/blob/master/docs/java/Multithread/synchronized.md
 公平锁
-    是指多个线程按照申请锁的顺序来获取锁类似排队打饭 先来后到
+    是指多个线程按照申请锁的顺序来获取锁,类似排队打饭,先来后到
 非公平锁
     是指在多线程获取锁的顺序并不是按照申请锁的顺序,有可能后申请的线程比先申请的线程优先获取到锁,在高并发的情况下,有可能造成优先级反转或者饥饿现象
     并发包ReentrantLock的创建可以指定构造函数的boolean类型来得到公平锁或者非公平锁 默认是非公平锁,非公平锁的优点在于吞吐量必公平锁大

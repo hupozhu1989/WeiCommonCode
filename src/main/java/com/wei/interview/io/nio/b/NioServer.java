@@ -1,4 +1,4 @@
-package com.wei.interview.io.nio;
+package com.wei.interview.io.nio.b;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -15,11 +15,11 @@ import java.util.Set;
  * @CreateDate: 2019/01/08
  * @Version: 1.0
  */
-public class NioServer02 {
+public class NioServer {
     private Integer port = 9000;
     private ServerSocketChannel server;
     private Selector selector;
-    public NioServer02(Integer port){
+    public NioServer(Integer port){
         this.port = port;
     }
 
@@ -109,7 +109,7 @@ public class NioServer02 {
     }
 
     public static void main(String[] args) {
-        new NioServer02(9000).start();
+        new NioServer(9000).start();
     }
 
 }

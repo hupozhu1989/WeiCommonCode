@@ -1,4 +1,4 @@
-package com.wei.interview.io.nio;
+package com.wei.interview.io.nio.b;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -9,7 +9,7 @@ import java.net.Socket;
  * @version 1.0
  * @date：2020/3/20 0020
  */
-public class NioClient02 {
+public class NioClient {
     public static void main(String[] args) {
         //但客户端单次发送请求
         Socket socket = null;

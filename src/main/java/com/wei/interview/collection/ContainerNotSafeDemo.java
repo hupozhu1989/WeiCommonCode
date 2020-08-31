@@ -1,7 +1,11 @@
-package com.wei.interview;
+package com.wei.interview.collection;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
@@ -43,9 +47,9 @@ public class ContainerNotSafeDemo {
     }
 
     public static void method01ArrayList() {
-        List<String> list = new ArrayList<>();//不安全
+        //List<String> list = new ArrayList<>();//不安全
         //List<Object> list = Collections.synchronizedList(new ArrayList<>());
-        //List<String> list = new CopyOnWriteArrayList();
+        List<String> list = new CopyOnWriteArrayList();
         for (int i = 1; i <= 30; i++) {//i->30
             new Thread(()->{
                 list.add(UUID.randomUUID().toString().substring(0,8));
@@ -68,5 +72,6 @@ public class ContainerNotSafeDemo {
          *      这样的好处是可以对copyOnWrite容器进行并发的读,而不需要加锁 因为当前容器不会添加任何容器.所以copyOnwrite容器也是一种
          *      读写分离的思想,读和写不同的容器.
          * 4.优化建议
-         */}
+         */
+    }
 }

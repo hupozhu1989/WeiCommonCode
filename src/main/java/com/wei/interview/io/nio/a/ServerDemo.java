@@ -1,4 +1,4 @@
-package com.wei.interview.io.nio;
+package com.wei.interview.io.nio.a;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -16,13 +16,13 @@ import java.util.Iterator;
  * @author xiezhengchao
  * @since 2018/4/7 14:32
  */
-public class ServerDemo01 {
+public class ServerDemo {
 
     private ByteBuffer readBuffer = ByteBuffer.allocateDirect(1024);
     private ByteBuffer writeBuffer = ByteBuffer.allocateDirect(1024);
     private Selector selector;
 
-    public ServerDemo01() throws IOException{
+    public ServerDemo() throws IOException{
         //创建服务端的 Channel
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         //配置非阻塞模式
@@ -40,7 +40,7 @@ public class ServerDemo01 {
     }
 
     public static void main(String[] args) throws Exception{
-        new ServerDemo01().go();
+        new ServerDemo().go();
     }
 
     private void go() throws Exception{

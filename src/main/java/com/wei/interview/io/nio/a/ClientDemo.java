@@ -1,4 +1,4 @@
-package com.wei.interview.io.nio;
+package com.wei.interview.io.nio.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,13 +17,13 @@ import java.util.Iterator;
  * @author xiezhengchao
  * @since 2018/4/7 15:10
  */
-public class ClientDemo01 {
+public class ClientDemo {
 
     private final ByteBuffer sendBuffer=ByteBuffer.allocate(1024);
     private final ByteBuffer receiveBuffer=ByteBuffer.allocate(1024);
     private Selector selector;
 
-    public ClientDemo01()throws IOException{
+    public ClientDemo()throws IOException{
         SocketChannel socketChannel = SocketChannel.open();
         socketChannel.connect(new InetSocketAddress(InetAddress.getLocalHost(),8080));
         socketChannel.configureBlocking(false);
@@ -33,7 +33,7 @@ public class ClientDemo01 {
     }
 
     public static void main(String[] args) throws Exception{
-        final ClientDemo01 client=new ClientDemo01();
+        final ClientDemo client=new ClientDemo();
         Thread receiver=new Thread(client::receiveFromUser);
 
         receiver.start();
