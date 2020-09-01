@@ -1,9 +1,7 @@
 package com.wei.spring.ioc;
 
 /**
- * @author weizhenchao
- * @version 1.0
- * @date：2020/7/17
+ * 循环依赖B
  */
 public class B {
     private A a;

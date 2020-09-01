@@ -23,6 +23,10 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/studymysql?characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
+  spring:
+    cache:
+      jcache:
+        config: ehcache.xml
 
 #mybatis的相关配置
 mybatis:

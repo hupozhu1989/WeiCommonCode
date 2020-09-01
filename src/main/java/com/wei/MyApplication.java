@@ -5,6 +5,7 @@ import com.wei.spring.beanFactoryPostProcessor.Engine;
 import com.wei.spring.beanFactoryPostProcessor.SpecialBeanForEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
  * @date：2020/3/6 0006
  */
 @SpringBootApplication
+@EnableCaching//ehcache缓存
 public class MyApplication {
     /*
         启动成功:
