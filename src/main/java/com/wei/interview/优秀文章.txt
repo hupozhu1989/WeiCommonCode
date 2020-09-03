@@ -1,0 +1,3 @@
+如何管理技术团队？我的6个建议   https://zhuanlan.zhihu.com/p/32918809
+redis实现限流   https://blog.csdn.net/u013887008/article/details/90311990
+zuul实现限流   https://www.jianshu.com/p/cb26c91c04ff
