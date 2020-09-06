@@ -16,12 +16,30 @@ import org.springframework.web.client.RestTemplate;
  * @date：2020/3/6 0006
  */
 @SpringBootApplication
-@EnableCaching//ehcache缓存
+@EnableCaching//缓存
 public class MyApplication {
     /*
         启动成功:
         Started MyApplication in 5.581 seconds (JVM running for 6.32)
         SpringBoot内置tomcat启动原理: https://www.cnblogs.com/sword-successful/p/11383723.html
+
+        https://zhuanlan.zhihu.com/p/163685081  https://zhuanlan.zhihu.com/p/55637237
+        @SpringBootApplication -> @EnableAutoConfiguration -> AutoConfigurationImportSelector.class -> selectImports() ->
+            getCandidateConfigurations() -> loadFactoryNames() -> loadSpringFactories()
+        自动化配置:spring-boot-autoconfigure包下spring.factories
+        这些注解都组合了@Conditional注解，只是使用了不同的条件组合最后为true时才会去实例化需要实例化的类，否则忽略过滤掉。
+            @ConditionalOnBean：当容器里有指定Bean的条件下
+            @ConditionalOnClass：当类路径下有指定的类的条件下
+            @ConditionalOnExpression：基于SpEL表达式为true的时候作为判断条件才去实例化
+            @ConditionalOnJava：基于JVM版本作为判断条件
+            @ConditionalOnJndi：在JNDI存在的条件下查找指定的位置
+            @ConditionalOnMissingBean：当容器里没有指定Bean的情况下
+            @ConditionalOnMissingClass：当容器里没有指定类的情况下
+            @ConditionalOnWebApplication：当前项目时Web项目的条件下
+            @ConditionalOnNotWebApplication：当前项目不是Web项目的条件下
+            @ConditionalOnProperty：指定的属性是否有指定的值
+            @ConditionalOnResource：类路径是否有指定的值
+            @ConditionalOnOnSingleCandidate：当指定Bean在容器中只有一个，或者有多个但是指定首选的Bean
      */
     public static void main(String[] args) {
         SpringApplication.run(MyApplication.class, args);
