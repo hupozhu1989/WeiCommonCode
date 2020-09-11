@@ -26,7 +26,7 @@ public class MyApplication {
         https://zhuanlan.zhihu.com/p/163685081  https://zhuanlan.zhihu.com/p/55637237
         @SpringBootApplication -> @EnableAutoConfiguration -> AutoConfigurationImportSelector.class -> selectImports() ->
             getCandidateConfigurations() -> loadFactoryNames() -> loadSpringFactories()
-        自动化配置:spring-boot-autoconfigure包下spring.factories
+        自动化配置:spring-boot-autoconfigure包下META-INF/spring.factories
         这些注解都组合了@Conditional注解，只是使用了不同的条件组合最后为true时才会去实例化需要实例化的类，否则忽略过滤掉。
             @ConditionalOnBean：当容器里有指定Bean的条件下
             @ConditionalOnClass：当类路径下有指定的类的条件下
@@ -62,7 +62,8 @@ public class MyApplication {
         Spring不推荐使用InitializationBean 来调用其初始化方法，因为它不必要地将代码耦合到Spring。Spring推荐使用@PostConstruct注解
         或者为POJO类指定其初始化方法这两种方式来完成初始化。
 
-        执行顺序如下:Bean的构造方法、@PostConstruct注解、InitializationBean、initMethod
+        执行顺序如下:Bean的构造方法、@PostConstruct注解(Java提供)、InitializingBean接口、@Bean中initMethod属性
+        https://www.cnblogs.com/april-chen/p/8182631.html
 
         BenzCar类（奔驰汽车类）有成员属性Engine（发动机），Engine是接口，无具体的实现类。本代码例子，通过BeanFactoryPostProcessor和FactoryBean,
         动态代理三项技术实现给BenzCar装配上Engine

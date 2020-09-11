@@ -11,7 +11,7 @@ Spring的IoC容器在实现的时候，充分运用了这两个实现阶段的�
 保存了bean定义必要信息的BeanDefinition，注册到相应的BeanDefinitionRegistry，这样容器启动工作就完成了。
 总地来说，该阶段所做的工作可以认为是准备性的，重点更加侧重于对象管理信息的收集。当然，一些验证性或者辅助性的工作也可以在这个阶段完成。
 2. Bean实例化阶段
-经过第一阶段，现在所有的bean定义信息都通过BeanDefinition的方式注册到了BeanDefini-tionRegistry中。当某个请求方通过容器的getBean方法
+经过第一阶段，现在所有的bean定义信息都通过BeanDefinition的方式注册到了BeanDefinitionRegistry中。当某个请求方通过容器的getBean方法
 明确地请求某个对象，或者因依赖关系容器需要隐式地调用getBean方法时，就会触发第二阶段的活动。该阶段，容器会首先检查所请求的对象之前是否已经初始化。
 如果没有，则会根据注册的BeanDefinition所提供的信息实例化被请求对象，并为其注入依赖。如果该对象实现了某些回调接口，也会根据回调接口的要求来装配它。
 当该对象装配完毕之后，容器会立即将其返回请求方使用。如果说第一阶段只是根据图纸装配生产线的话，那么第二阶段就是使用装配好的生产线来生产具体的产品了。
@@ -23,6 +23,9 @@ Spring提供了一种叫做BeanFactoryPostProcessor的容器扩展机制。该�
 BeanFactoryPostProcessor是实现spring容器功能扩展的重要接口，例如修改bean属性值，实现bean动态代理等。很多框架都是通过此接口实现对spring容器
 的扩展，例如mybatis与spring集成时，只定义了mapper接口，无实现类，但spring却可以完成自动注入，是不是很神奇？ 本文将通过简单的例子，
 展现BeanFactoryPostProcessor的扩展能力。
+
+BeanPostProcessor 是在实例化后，初始化方法执行前、后分别执行2个方法(这里的初始化方法是init-method或者
+实现了InitializingBean的afterPropertiesSet方法，一般用于读取缓存文件、初始化信息等操作)。
 
 启动项目后日志里打印如下:
 1    SpecialBeanForEngine bean name :specialBeanForEngine

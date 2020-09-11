@@ -1,5 +1,15 @@
+>>>散装区
 如何管理技术团队？我的6个建议   https://zhuanlan.zhihu.com/p/32918809
 秒杀抢红包   https://zhuanlan.zhihu.com/p/212684219
 redis实现限流   https://blog.csdn.net/u013887008/article/details/90311990
 zuul实现限流   https://www.jianshu.com/p/cb26c91c04ff+
 数据库死锁   https://www.cnblogs.com/wezheng/p/8366029.html
+currenthashmap    https://blog.csdn.net/qq_41737716/article/details/90549847
+一个@Transactional哪里来这么多坑？   https://mp.weixin.qq.com/s/infwcTVeEYK3RmI6I9NEog
+
+>>>微服务专区
+eureka  https://blog.csdn.net/qwe86314/article/details/94552801
+eureka缓存机制   https://blog.csdn.net/qq_40378034/article/details/103850144
+hystrix隔离策略  https://blog.csdn.net/yangguosb/article/details/80803147
+        https://www.cnblogs.com/duanxz/p/9681470.html
+ribbon

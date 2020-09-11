@@ -24,6 +24,10 @@ public class TestMybatis {
     private SqlSessionFactory sqlSessionFactory;
 
     //https://www.cnblogs.com/lcngu/p/5470695.html
+    /*
+        ClassPathMapperScanner.java -> processBeanDefinitions()
+        MapperFactoryBean.java extends FactoryBean<T>
+     */
     @Test
     public void demo1(){
         //获取session

@@ -68,7 +68,7 @@ public class GCDemo {
             并发标记清除GC(CMS)
                 ConcurrentMarkSweep:并发标记清除,是一种以最短回收停顿时间为目标的收集器
                 对应JVM参数: -XX:+UseConcMarkSweepGC 开启该参数后会自动将-XX:+UseParNewGC打开,开启该参数后,使用ParNew(Young区用)+
-                CMS(Old区用)+Serial Old的收集器组合,Serial Old将作为CMS出错的后背收集器
+                CMS(Old区用)+Serial Old的收集器组合,Serial Old将作为CMS出错的后备收集器
                 4步过程:
                     初始标记(CMS initial mark)
                     并发标记(CMS concurrent mark)和用户线程一起:主要标记过程,标记全部对象
