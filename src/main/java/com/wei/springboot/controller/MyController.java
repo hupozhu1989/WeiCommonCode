@@ -5,6 +5,7 @@ import com.wei.common.resttemplate.ApiResult;
 import com.wei.common.resttemplate.FriendlyLink;
 import com.wei.springboot.entity.TStudent;
 import com.wei.springboot.service.StudentService;
+import com.wei.springboot.service.StudentTransactionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class MyController {
 
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private StudentTransactionService studentTransactionService;
 
     @ApiOperation("获取友情链接")
     @GetMapping("/queryFriendlyLinks")
@@ -55,4 +58,32 @@ public class MyController {
         return new ApiResult<>("000","OK",pageInfo);
     }
 
+    @GetMapping("/testTransaction")
+    public ApiResult<Void> testTransaction(@RequestParam(value="type",defaultValue="1")int type){
+        TStudent a = new TStudent();
+        a.setId(12);
+        a.setName("宫崎葵");
+        a.setAge("40");
+        a.setGender(0);
+
+        TStudent b = new TStudent();
+        b.setName("测试001");
+        b.setAge("12");
+        b.setGender(1);
+
+        switch (type){
+            case 1:
+                studentTransactionService.saveAB1(a,b);
+                break;
+            case 2:
+                studentTransactionService.saveAB2(a,b);
+                break;
+            case 3:
+                studentTransactionService.saveAB3(a,b);
+                break;
+            default:
+                break;
+        }
+        return new ApiResult<>();
+    }
 }

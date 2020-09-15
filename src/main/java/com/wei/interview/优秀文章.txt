@@ -13,3 +13,6 @@ eureka缓存机制   https://blog.csdn.net/qq_40378034/article/details/103850144
 hystrix隔离策略  https://blog.csdn.net/yangguosb/article/details/80803147
         https://www.cnblogs.com/duanxz/p/9681470.html
 ribbon
+
+>>>算法
+快速排序   https://blog.csdn.net/shujuelin/article/details/82423852
