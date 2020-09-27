@@ -58,6 +58,8 @@ public class TestSpring {
 		UserDao userDAO = (UserDao)applicationContext.getBean("userDao");
 		userDAO.save();
 		System.out.println("结束~~~");
+		//关闭容器
+		//((ClassPathXmlApplicationContext)applicationContext).registerShutdownHook();
 		//打印结果:
 		//UserDaoImpl执行了...猪八戒
 	}

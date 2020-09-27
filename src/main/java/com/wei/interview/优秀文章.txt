@@ -2,10 +2,13 @@
 如何管理技术团队？我的6个建议   https://zhuanlan.zhihu.com/p/32918809
 秒杀抢红包   https://zhuanlan.zhihu.com/p/212684219
 redis实现限流   https://blog.csdn.net/u013887008/article/details/90311990
+redis实现可重入锁   https://www.jianshu.com/p/1c5c1a592088
 zuul实现限流   https://www.jianshu.com/p/cb26c91c04ff+
 数据库死锁   https://www.cnblogs.com/wezheng/p/8366029.html
 currenthashmap    https://blog.csdn.net/qq_41737716/article/details/90549847
 一个@Transactional哪里来这么多坑？   https://mp.weixin.qq.com/s/infwcTVeEYK3RmI6I9NEog
+Tomcat架构原理解析到架构设计借鉴    https://mp.weixin.qq.com/s/AnSiLspqq73K0v5m7JY_yw
+代理模式、静态代理、JDK+CGLIB动态代理    https://mp.weixin.qq.com/s/ImzxpN23eyh4yimYkckD4Q
 
 >>>微服务专区
 eureka  https://blog.csdn.net/qwe86314/article/details/94552801
@@ -16,3 +19,8 @@ ribbon
 
 >>>算法
 快速排序   https://blog.csdn.net/shujuelin/article/details/82423852
+
+>>>数据库
+MySQL索引失效   https://www.cnblogs.com/wdss/p/11186411.html
+MySQL夺命连环13问   https://mp.weixin.qq.com/s/UFb-hqxc_nSfSZBXeOfx8Q
+SortedSet实现多维度排序   https://blog.csdn.net/qq_43035350/article/details/108049031
