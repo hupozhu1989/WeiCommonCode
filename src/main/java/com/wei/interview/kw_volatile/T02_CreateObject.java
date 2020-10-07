@@ -8,6 +8,6 @@ package com.wei.interview.kw_volatile;
 public class T02_CreateObject {
     public static void main(String[] args) {
         //show bytecode with Jclasslib，Methods->main->Code
-        Object obj = new Object();
+        //Object obj = new Object();
     }
 }
