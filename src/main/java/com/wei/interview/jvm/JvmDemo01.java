@@ -95,10 +95,12 @@ public class JvmDemo01 {
         元空间(Java8)与永久代(Java7)之间最大的区别:
             永久代使用JVM的堆内存,元空间使用本机物理内存,元空间大小受本地内存限制.
         常用基本配置参数:
-            -Xms    等价于-XX:InitialHeapSize  初始内存大小,默认为物理内存1/64
-            -Xmx    等价于-XX:MaxHeapSize      最大分配内存，默认为物理内存1/4
+            -Xms    等价于-XX:InitialHeapSize  初始堆内存大小,默认为物理内存1/64
+            -Xmx    等价于-XX:MaxHeapSize      最大分配堆内存，默认为物理内存1/4
             -Xss    等价于-XX:ThreadStackSize  设置单个线程的大小，一般默认为512K~1024K
             -Xmn    设置年轻代大小
+            -XX:PermSize=256m    非堆区初始内存分配大小
+            -XX:MaxPermSize=256m  非堆区分配的内存的最大上限
             -XX:+MetaspaceSize   设置元空间大小     -Xms128m -Xmx4096m -Xss1024k -XX:MetaspaceSize=512m -XX:+PrintCommandLineFlags -XX:PrintGCDetails -XX:+UseSerialGC
             -XX:+PrintGCDetails  输出详细GC收集日志信息
             -XX:SurvivorRatio    设置新生代中Eden和S0/S1空间的比例,默认: -XX:SurvivorRatio=8,Eden:S0:S1=8:1:1,SurvivorRatio就是设置Eden区的比例占多少,S0/S1相同
