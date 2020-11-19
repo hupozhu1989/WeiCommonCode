@@ -3,6 +3,7 @@ package com.wei;
 import com.wei.spring.beanFactoryPostProcessor.BenzCar;
 import com.wei.spring.beanFactoryPostProcessor.Engine;
 import com.wei.spring.beanFactoryPostProcessor.SpecialBeanForEngine;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableCaching//缓存
+@MapperScan(basePackages = {"com.wei.springboot.dao"})
 public class MyApplication {
     /*
         启动成功:
