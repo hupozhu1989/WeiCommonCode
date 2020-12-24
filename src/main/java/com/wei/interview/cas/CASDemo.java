@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CASDemo {
     /*
         CAS(CompareAndSwap)
-        内存值V,旧的预期值A,要修改的更新值B,当且仅当预期值A和内存值V相同时,将内存值V修改为B,否则什么都不做
+        从某一内存上取值V,旧的预期值A,要修改的更新值B,当且仅当预期值A和内存值V相同时,将内存值V修改为B,否则什么都不做
 
         AtomicInteger为什么可以保证原子性?
         1.UnSafe类在于sun.misc包中,其内部方法操作可以向C的指针一样直接操作内存,UnSafe类中所有的方法都是native修饰的,

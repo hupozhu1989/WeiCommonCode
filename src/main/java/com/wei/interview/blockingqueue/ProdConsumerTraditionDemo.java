@@ -74,8 +74,8 @@ class ShareData{
                 condition.await();
             }
             //干活
-            num--;
             System.out.println(Thread.currentThread().getName() + "\t减一" + "\t" + num);
+            num--;
             //通知唤醒
             condition.signalAll();
         } finally {
