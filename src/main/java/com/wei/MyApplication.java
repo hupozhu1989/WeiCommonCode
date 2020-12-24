@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableCaching//缓存
-@MapperScan({"com.wei.springboot.dao"})
+@MapperScan(basePackages = {"com.wei.springboot.dao"})
 public class MyApplication {
     /*
         启动成功:
