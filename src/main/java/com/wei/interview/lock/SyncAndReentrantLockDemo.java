@@ -1,4 +1,4 @@
-package com.wei.interview.blockingqueue;
+package com.wei.interview.lock;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
