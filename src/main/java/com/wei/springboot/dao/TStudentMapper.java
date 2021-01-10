@@ -1,6 +1,7 @@
 package com.wei.springboot.dao;
 
 import com.wei.springboot.entity.TStudent;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public interface TStudentMapper {
      *
      * @mbg.generated Wed Aug 05 15:11:42 GMT+08:00 2020
      */
-    //@Select("select * from t_student where id = #{id}")
+    @Select("select * from t_student where id = #{id}")
     TStudent selectByPrimaryKey(Integer id);
 
     /**
