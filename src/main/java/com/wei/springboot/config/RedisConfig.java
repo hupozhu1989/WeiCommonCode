@@ -3,6 +3,9 @@ package com.wei.springboot.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.redisson.Redisson;
+import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +25,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching //开启注解
 public class RedisConfig extends CachingConfigurerSupport {
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
 
     /**
      * RedisTemplate相关配置
@@ -52,6 +58,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.afterPropertiesSet();
         return template;
     }
+
+    @Bean
+    public Redisson redisson(){
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://"+redisHost+":6379").setDatabase(0);
+        return (Redisson) Redisson.create(config);
+    }
+
 
     /**
      * 对hash类型的数据操作
