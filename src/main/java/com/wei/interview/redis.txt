@@ -9,38 +9,38 @@ redis使用场景
             新增商品 -> hset shopcar:uid1024 334477 1
             新增商品 -> hset shopcar:uid1024 334488 1
             增加商品数量 -> hincrby shopcar:uid1024 334477 1
-            商品总数 -> hlen shopcar:uid1024
+            商品去重总数 -> hlen shopcar:uid1024
             全部选择 -> hgetall shopcar:uid1024
     list
         微信公众号
             ①大v作者李永乐和CSDN发布了文章分别是 11和22
             ②我关注了他们2个,只要他们发布文章,就会投递进我的list
-            lpush likearticle:我的id 11 22
-            ③查看自己的号订阅的全部文章,类似分页,下面0~10就是一次显示10条
-            lrange likearticle:我的id 0 10
+            lpush likearticle:uid1024 11 22
+            ③查看自己的号订阅的全部文章,类似分页,下面0~4就是一次显示5条
+            lrange likearticle:uid1024 0 4
     set
         微信抽奖小程序
-            ①用户ID,立即参与按钮    sadd key 用户ID
-            ②显示已经有多少人参与了    scard key
+            ①用户ID,立即参与按钮    sadd lottery:reward001 uid1024
+            ②显示已经有多少人参与了    scard lottery:reward001
             ③抽奖(从set中任意选取N个中奖人)
-                srandmember key 2 随机抽奖2个人,元素不删除
-                spop key 3 随机抽奖3个人,元素会删除
+                srandmember lottery:reward001 2 随机抽奖2个人,元素不删除
+                spop lottery:reward001 3 随机抽奖3个人,元素会删除
         微信朋友圈点赞
-            ①新增点赞    sadd pub:msgID 点赞用户ID1 点赞用户ID2
-            ②取消点赞    srem pub:msgID 点赞用户ID
-            ③展现所有点赞过的用户 smembers pub:msgID
-            ④点赞用户数统计    scard pub:msgID
-            ⑤判断某个朋友是否对楼主点赞过 sismember pub:msgID msgID
+            ①新增点赞    sadd pub:msg10005 uid1024 uid1025 uid1026
+            ②取消点赞    srem pub:msg10005 uid1024
+            ③展现所有点赞过的用户 smembers pub:msg10005
+            ④点赞用户数统计    scard pub:msg10005
+            ⑤判断某个朋友是否对楼主点赞过 sismember pub:msg10005 uid1026
         微博好友关注社交关系
+            sadd weibo:s1 1 2 3 4 5
+            sadd weibo:s2 3 4 5 6 7
             共同关注的人
-                sadd s1 1 2 3 4 5
-                sadd s2 3 4 5 6 7
-                sinter s1 s2
-        qq内推可能认识的人
-                sdiff s1 s2
-                sdiff s2 s1
+                sinter weibo:s1 weibo:s2
+            可能认识的人
+                s2可能认识  sdiff weibo:s1 weibo:s2
+                s1可能认识  sdiff weibo:s2 weibo:s1
     zset
         根据商品销量对商品进行排序显示
-            商品编号1001的销量是9,商品编号1002的销量是15    zadd goods:sellsort 9 1001 15 1002
-            有个客户买了2件商品1001    zincrby goods:sellsort 2 1001
-            求商品销量前10名    zrange goods:sellsort 0 10 withscores
+            商品编号1001的销量是9,商品编号1002的销量是15    zadd goods:sellsort 9 item1001 15 item1002
+            有个客户买了2件商品1001    zincrby goods:sellsort 2 item1001
+            求商品销量前10名    zrange goods:sellsort 0 9
