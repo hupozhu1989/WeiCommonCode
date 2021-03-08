@@ -14,6 +14,7 @@ https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&mid=2247490136&idx=1&sn=58391a
 分布式事务  https://www.jianshu.com/p/917cb4bdaa03
 Spring中的线程安全性  https://juejin.cn/post/6844903509037416455
 @Transactional源码  https://www.jianshu.com/p/9fa0b3c17810
+零拷贝  https://juejin.cn/post/6844903815913668615
 >>>微服务专区
 eureka  https://blog.csdn.net/qwe86314/article/details/94552801
 eureka缓存机制   https://blog.csdn.net/qq_40378034/article/details/103850144

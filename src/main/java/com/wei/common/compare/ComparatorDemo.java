@@ -1,9 +1,7 @@
 package com.wei.common.compare;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.text.Collator;
+import java.util.*;
 
 /**
  * @author weizhenchao
@@ -13,29 +11,41 @@ import java.util.List;
 public class ComparatorDemo {
     public static void main(String[] args) {
         //Integer类型
-        method01();
+        //method01();
         //pojo对象
         method02();
     }
 
     public static void method02() {
         List<Person2> list = new ArrayList<>();
-        list.add(new Person2("张三", 30));
-        list.add(new Person2("王五", 10));
-        list.add(new Person2("李四", 20));
-        list.add(new Person2("⼩红", 5));
-        System.out.println("=========原始========");
+        list.add(new Person2("张三", 15));
+        list.add(new Person2("李四", 30));
+        list.add(new Person2("王五", 28));
+        list.add(new Person2("赵六", 25));
+        list.add(new Person2("田七", 10));
+        list.add(new Person2("孙八", 18));
+        list.add(new Person2("白九", 12));
+        System.out.println("===============原始==============");
         for (Person2 person : list) {
             System.out.println(person);
         }
-        //排序
-        Collections.sort(list, new Comparator<Person2>() {
+        //年龄排序
+        /*Collections.sort(list, new Comparator<Person2>() {
             @Override
             public int compare(Person2 o1, Person2 o2) {
                 return o1.getAge() - o2.getAge();
             }
+        });*/
+        //姓名排序
+        Collections.sort(list, new Comparator<Person2>() {
+            Collator collator = Collator.getInstance(Locale.CHINA);
+            @Override
+            public int compare(Person2 o1, Person2 o2) {
+                return collator.compare(o1.getName(),o2.getName());//升序
+                //return collator.compare(o2.getName(),o1.getName());//降序
+            }
         });
-        System.out.println("=========排序后========");
+        System.out.println("===============排序后==============");
         for (Person2 person : list) {
             System.out.println(person);
         }
