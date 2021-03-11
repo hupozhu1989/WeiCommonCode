@@ -36,12 +36,16 @@ spring:
 
 #mybatis的相关配置
 mybatis:
-  #mapper配置文件
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.wei.springboot.entity
-  #开启驼峰命名
+  #配置,相当于mybatis.xml
   configuration:
+    #开启驼峰式命名，数据库的列名能够映射到去除下划线驼峰命名后的字段名
     map-underscore-to-camel-case: true
+    #一级缓存,session-开启;statement-关闭
+    local-cache-scope: statement
+    #二级缓存
+    cache-enabled: false
 #pagehelper分页插件配置
 pagehelper:
   helperDialect: mysql

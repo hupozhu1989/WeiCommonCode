@@ -27,6 +27,8 @@ SpringCloud   https://mp.weixin.qq.com/s/mwn2X0G9UgUDz1sgGgL1mA
 MySQL索引失效   https://www.cnblogs.com/wdss/p/11186411.html
 MySQL夺命连环13问   https://mp.weixin.qq.com/s/UFb-hqxc_nSfSZBXeOfx8Q
 SortedSet实现多维度排序   https://blog.csdn.net/qq_43035350/article/details/108049031
+MySQL的explain  https://segmentfault.com/a/1190000021458117?utm_source=tag-newest#
+MySQL索引失效    https://segmentfault.com/a/1190000021464570?utm_source=sf-related
 
 >>>垃圾回收
 CMS垃圾回收器详解    https://blog.csdn.net/zqz_zqz/article/details/70568819

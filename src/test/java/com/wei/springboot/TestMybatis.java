@@ -1,6 +1,5 @@
 package com.wei.springboot;
 
-import com.wei.springboot.config.AppConfig;
 import com.wei.springboot.dao.TStudentMapper;
 import com.wei.springboot.entity.TStudent;
 import org.apache.ibatis.session.SqlSession;
@@ -9,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -39,17 +37,6 @@ public class TestMybatis {
         System.out.println(student);
         //关闭session
         session.close();
-    }
-
-    @Test
-    public void demo2(){
-		/*
-			jdk动态代理产生mapper的代理对象   mybatis的动态代理
-		 */
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        TStudentMapper mapper = applicationContext.getBean(TStudentMapper.class);
-        TStudent student = mapper.selectByPrimaryKey(1);
-        System.out.println(student);
     }
 
 }
