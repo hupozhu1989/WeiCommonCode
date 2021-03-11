@@ -11,7 +11,10 @@ Tomcat架构原理解析到架构设计借鉴    https://mp.weixin.qq.com/s/AnSi
 Tomcat架构    https://mp.weixin.qq.com/s/wh2MEJa0VjfG2FWjUmsElA
 代理模式、静态代理、JDK+CGLIB动态代理    https://mp.weixin.qq.com/s/ImzxpN23eyh4yimYkckD4Q
 https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&mid=2247490136&idx=1&sn=58391aaa53b9e8866747f897d2baabc6&chksm=fba6f25bccd17b4dc8648591b76ea54f3f90303ac924560c4b6fb5942a21759fe3f2c834c235&scene=126&sessionid=1606125744&key=d7a8d1742847f01db2ae992e6f3f50bca7605f2b2fe0565d26c83c3c940355bf5b4c5b3afa72ad1253ffc5f4fbdc8840d98f3264250ea4982952f0701923359a31e879befaf1218a7ab6967a4fb2ed9251cb61f464cf727caa8898468c7d4ae756b9ea5f830ef5f0210192aa0564b0364c6f8d9d50bdc5433558f05153712634&ascene=1&uin=MTAxMjMxNzQwMA%3D%3D&devicetype=Windows+10+x64&version=63000039&lang=zh_CN&exportkey=AZuPDj5TJLfWxUXJM%2Baqq18%3D&pass_ticket=apiy9sQapARzTTaQsc8pCh5elZazTeZUlnxPqy5OZLThm1ZDwhwuqYrpo3Bmk%2Fzc&wx_header=0
-
+分布式事务  https://www.jianshu.com/p/917cb4bdaa03
+Spring中的线程安全性  https://juejin.cn/post/6844903509037416455
+@Transactional源码  https://www.jianshu.com/p/9fa0b3c17810
+零拷贝  https://juejin.cn/post/6844903815913668615
 >>>微服务专区
 eureka  https://blog.csdn.net/qwe86314/article/details/94552801
 eureka缓存机制   https://blog.csdn.net/qq_40378034/article/details/103850144
