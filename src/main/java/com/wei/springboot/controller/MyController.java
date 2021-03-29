@@ -56,7 +56,7 @@ public class MyController {
 
     //http://localhost:8088/mycontroller/queryStudentPage
     @ApiOperation("分页获取学生")
-    @PostMapping("/queryStudentPage")
+    @GetMapping("/queryStudentPage")
     public ApiResult<PageInfo> queryStudentPage(@RequestParam(value="pageNo",defaultValue="1")int pageNo, @RequestParam(value="pageSize",defaultValue="5")int pageSize){
         PageInfo<TStudent> pageInfo = studentService.queryStudentPage(pageNo, pageSize);
         return new ApiResult<>("000","OK",pageInfo);
