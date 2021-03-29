@@ -1,5 +1,5 @@
-redis八大数据类型：String(字符类型)  Hash(散列类型)  List(列表类型)  Set(集合类型)  SortedSet(有序集合类型)
-                  Bitmap(位图)  HyperLogLog(统计)  GEO（地理）
+redis八大数据类型: String(字符类型)  Hash(散列类型)  List(列表类型)  Set(集合类型)  SortedSet(有序集合类型)
+                  Bitmap(位图)  HyperLogLog(统计)  GEO(地理)
 redis使用场景
     string
         商品编号、订单号采用INCR命令生成  incr items:001
@@ -44,3 +44,27 @@ redis使用场景
             商品编号1001的销量是9,商品编号1002的销量是15    zadd goods:sellsort 9 item1001 15 item1002
             有个客户买了2件商品1001    zincrby goods:sellsort 2 item1001
             求商品销量前10名    zrange goods:sellsort 0 9
+    bitmap
+        setbit bittest 1 1
+        setbit bittest 4 1
+        setbit bittest 8 1
+        getbit bittest 1
+        getbit bittest 4
+        bitcount bittest 0 -1
+    HyperLogLog
+        PFADD hypertest a b c d e f d g h a i j c
+        PFCOUNT hypertest
+    geo
+        -- geoadd：添加地理位置的坐标，可以将一个或多个经度(longitude)、纬度(latitude)、位置名称(member)添加到指定的 key 中
+        geoadd guangdong 113.23 23.16 guangzhou 114.07 22.62 shenzhen 116.63 23.68 chaozhou
+        -- geodist：计算两个位置之间的距离
+        geodist guangdong guangzhou shenzhen km
+        -- georadius：根据用户给定的经纬度坐标来获取指定范围内的地理位置集合
+        georadius guangdong 113 23 100 km
+        georadius guangdong 113 23 200 km
+        -- georadiusbymember：根据储存在位置集合里面的某个地点获取指定范围内的地理位置集合
+        georadiusbymember guangdong guangzhou 200 km
+        -- geopos：获取地理位置的坐标，用于从给定的 key 里返回所有指定名称(member)的位置（经度和纬度），不存在的返回 nil
+        geopos guangdong guangzhou
+        -- geohash：返回一个或多个位置对象的 geohash 值
+        geohash guangdong guangzhou
