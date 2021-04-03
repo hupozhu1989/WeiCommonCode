@@ -2,6 +2,8 @@ package com.wei.interview.lock;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author weizhenchao
  * @version 1.0
@@ -23,6 +25,7 @@ public class T01_HelloJOL {
         //轻量级自旋锁--00
         synchronized (o){
             System.out.println(ClassLayout.parseInstance(o).toPrintable());
+            TimeUnit.SECONDS.sleep(5);
         }
 
     }
