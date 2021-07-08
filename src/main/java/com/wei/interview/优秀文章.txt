@@ -20,6 +20,8 @@ eureka  https://blog.csdn.net/qwe86314/article/details/94552801
 eureka缓存机制   https://blog.csdn.net/qq_40378034/article/details/103850144
 hystrix隔离策略  https://blog.csdn.net/yangguosb/article/details/80803147
         https://www.cnblogs.com/duanxz/p/9681470.html
+        https://juejin.cn/post/6844903830899933198
+        HystrixCommandProperties.class
 ribbon
 SpringCloud   https://mp.weixin.qq.com/s/mwn2X0G9UgUDz1sgGgL1mA
 
@@ -35,3 +37,5 @@ MySQL索引失效    https://segmentfault.com/a/1190000021464570?utm_source=sf-r
 
 >>>垃圾回收
 CMS垃圾回收器详解    https://blog.csdn.net/zqz_zqz/article/details/70568819
+
+https://juejin.cn/post/6844903634828787726

@@ -1,0 +1,26 @@
+https://blog.csdn.net/yuan520588/article/details/88919659
+
+Propagation.REQUIRED
+	在外围方法未开启事务的情况下Propagation.REQUIRED修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
+	在外围方法开启事务的情况下Propagation.REQUIRED修饰的内部方法会加入到外围方法的事务中，所有Propagation.REQUIRED修饰的内部方法和外围方法均属于同一事务，只要一个方法回滚，整个事务均回滚。
+
+PROPAGATION_REQUIRES_NEW
+	在外围方法未开启事务的情况下Propagation.REQUIRES_NEW修饰的内部方法会新开启自己的事务，且开启的事务相互独立，互不干扰。
+	在外围方法开启事务的情况下Propagation.REQUIRES_NEW修饰的内部方法依然会单独开启独立事务，且与外部方法事务也独立，内部方法之间、内部方法和外部方法事务均相互独立，互不干扰。
+
+PROPAGATION_NESTED
+    在外围方法未开启事务的情况下Propagation.NESTED和Propagation.REQUIRED作用相同，修饰的内部方法都会新开启自己的事务，且开启的事务相互独立，互不干扰。
+    在外围方法开启事务的情况下Propagation.NESTED修饰的内部方法属于外部事务的子事务，外围主事务回滚，子事务一定回滚，而内部子事务可以单独回滚而不影响外围主事务和其他子事务
+
+PROPAGATION_SUPPORTS
+    在外围方法未开启事务的情况下，以非事务的方式运行
+    在外围方法开启事务的情况下，加入到外围方法的事务中
+
+PROPAGATION_NOT_SUPPORTED
+    表示该方法不应该在一个事务中运行。如果有一个事务正在运行，他将在运行期被挂起，直到这个事务提交或者回滚才恢复执行
+
+PROPAGATION_MANDATORY
+    表示当前方法必须在一个事务中运行，如果没有事务，将抛出异常
+
+PROPAGATION_NEVER
+    表示当方法务不应该在一个事务中运行，如果存在一个事务，则抛出异常
