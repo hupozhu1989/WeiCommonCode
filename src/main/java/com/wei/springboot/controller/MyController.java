@@ -1,20 +1,19 @@
 package com.wei.springboot.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.wei.common.resttemplate.ApiResult;
 import com.wei.common.resttemplate.FriendlyLink;
 import com.wei.springboot.entity.TStudent;
+import com.wei.springboot.service.PeopleService;
 import com.wei.springboot.service.StudentService;
 import com.wei.springboot.service.StudentTransactionService;
-import com.wei.springboot.util.HttpUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,12 +25,17 @@ import java.util.Map;
 @Api(value = "我的")
 @RestController()
 @RequestMapping("/mycontroller")
+@Slf4j
 public class MyController {
 
     @Autowired
     private StudentService studentService;
     @Autowired
     private StudentTransactionService studentTransactionService;
+    @Autowired
+    Map<String, PeopleService> map;
+    @Autowired
+    List<PeopleService> list;
 
     @ApiOperation("获取友情链接")
     @GetMapping("/queryFriendlyLinks")
@@ -91,14 +95,10 @@ public class MyController {
         return new ApiResult<>();
     }
 
-    @GetMapping("/getLinshiStoreInfo")
-    public String getLinshiStoreInfo(){
-        Map<String, String> paramMap = new HashMap<String, String>();
-        paramMap.put("longitude", "23.1200491");
-        paramMap.put("latitude", "113.30764968");
-        String nbo_server = "http://sale.linshimuye.com:8084";
-        String url = nbo_server + "/external-web/api/reservation/os/nearbyStore";
-        String result = HttpUtils.doPostJson(url, JSON.toJSONString(paramMap));
-        return result;
+    @GetMapping("/test01")
+    public void test01(){
+        //spring可以将实现了同一接口的所有实现类注入map和list中
+        log.info(map.toString());
+        log.info(list.toString());
     }
 }

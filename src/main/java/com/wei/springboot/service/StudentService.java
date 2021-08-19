@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 //@CacheConfig是一个类级别的注解，允许共享cacheNames、keyGenerator、cacheManager 和 cacheResolver。
 //@CacheConfig(cacheNames = "students")
-public class StudentService {
+public class StudentService implements PeopleService{
     private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
     @Autowired
     private TStudentMapper tStudentMapper;
